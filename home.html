@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home-Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+    integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+  <nav class="p-5 w-full flex justify-between items-baseline">
+    <div class="flex justify-center items-center gap-1">
+      <div class="h-6">
+        <img class="h-full" src="./images/Logo.png" alt="" />
+      </div>
+      <a class="text-2xl font-bold" href="./home.html">Furniro</a>
+    </div>
+    <div class="text-m flex justify-center gap-15">
+      <a class="underline-none" href="./home.html">Home</a>
+      <a class="underline-none" href="./shop.html">Shop</a>
+      <a class="underline-none" href="./blog.html">About</a>
+      <a class="underline-none" href="./contact.html">Contact</a>
+    </div>
+    <div class="flex justify-center items-center gap-8 text-xl">
+      <i class="ri-user-3-line"></i>
+      <i class="ri-search-line"></i>
+      <i class="ri-heart-line"></i>
+      <i class="ri-shopping-cart-2-line"></i>
+    </div>
+  </nav>
+  <main>
+    <section class="h-[88.5vh] relative">
+      <div class="h-full">
+        <img class="h-full w-full object-cover" src="./images/homepage/home.png" alt="" />
+      </div>
+      <div class="absolute bottom-[20%] right-[7%] w-[560px] rounded-lg bg-[#F8F4E9] p-12 shadow-lg">
+        <p class="text-[16px] font-semibold tracking-[3px] text-[#333333]">New Arrival</p>
+        <h1 class="mt-2 text-[48px] font-bold leading-[60px] text-[#B88E4A]">
+          Discover Our<br />New Collection
+        </h1>
+        <p class="mt-4 text-[16px] leading-[24px] text-[#666666]">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+          tellus, luctus nec ullamcorper mattis.
+        </p>
+        <button
+          class="mt-8 bg-[#B88E4A] px-[72px] py-[14px] text-[16px] font-bold uppercase tracking-[1px] text-white transition-colors hover:bg-[#A67D3F]">
+          BUY NOW
+        </button>
+      </div>
+    </section>
+    <section class="h-screen flex flex-col items-center justify-center mx-auto max-w-[1236px] px-6 py-10 text-center">
+      <h1 class="text-[32px] font-bold text-[#333333]">Browse The Range</h1>
+      <p class="mt-2 text-[16px] text-[#666666]">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+      <div class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
+        <article>
+          <img class="w-full rounded-[10px] object-cover" src="./images/homepage/image12.png"
+            alt="Dining room furniture" loading="lazy" />
+          <h3 class="mt-5 text-2xl font-semibold text-[#333333]">Dining</h3>
+        </article>
+        <article>
+          <img class="w-full rounded-[10px] object-cover" src="./images/homepage/image10.png"
+            alt="Living room furniture" loading="lazy" />
+          <h3 class="mt-5 text-2xl font-semibold text-[#333333]">Living</h3>
+        </article>
+        <article>
+          <img class="w-full rounded-[10px] object-cover" src="./images/homepage/image11.png" alt="Bedroom furniture"
+            loading="lazy" />
+          <h3 class="mt-5 text-2xl font-semibold text-[#333333]">Bedroom</h3>
+        </article>
+      </div>
+    </section>
+    <section class="min-h-screen bg-white px-6 py-16">
+      <div class="mx-auto max-w-[1236px]">
+        <!-- Title -->
+        <div class="mb-12 text-center">
+          <h2 class="text-[32px] font-bold text-[#333333]">Our Products</h2>
+        </div>
+        <!-- Products Grid -->
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- Product 1: Syltherine -->
+          <div class=" relative overflow-hidden bg-[#F4F5F7]">
+            <div class="relative group">
+              <img class="w-full object-cover" src="./images/homepage/image1.png" alt="Syltherine" loading="lazy" />
+              <span
+                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#E97171] text-sm font-medium text-white">-30%</span>
+              <!-- Overlay on hover -->
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to cart</button>
+                <div class="flex items-center gap-6 text-sm text-white">
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-share-line"></i> Share</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-arrow-left-right-line"></i> Compare</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-heart-line"></i> Like</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold text-[#3A3A3A]">Syltherine</h3>
+              <p class="mt-1 text-sm text-[#898989]">Stylish cafe chair</p>
+              <div class="mt-2 flex items-center gap-3">
+                <span class="text-lg font-bold text-[#3A3A3A]">Rp 2.500.000</span>
+                <span class="text-sm text-[#B0B0B0] line-through">Rp 3.500.000</span>
+              </div>
+            </div>
+          </div>
+          <!-- Product 2: Leviosa (with overlay) -->
+          <div class=" relative overflow-hidden bg-[#F4F5F7]">
+            <div class="relative group">
+              <img class="w-full object-cover" src="./images/homepage/image2.png" alt="Leviosa" loading="lazy" />
+              <!-- Overlay on hover -->
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to cart</button>
+                <div class="flex items-center gap-6 text-sm text-white">
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-share-line"></i> Share</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-arrow-left-right-line"></i> Compare</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-heart-line"></i> Like</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold text-[#3A3A3A]">Leviosa</h3>
+              <p class="mt-1 text-sm text-[#898989]">Stylish cafe chair</p>
+              <div class="mt-2 flex items-center gap-3">
+                <span class="text-lg font-bold text-[#3A3A3A]">Rp 2.500.000</span>
+              </div>
+            </div>
+          </div>
+          <!-- Product 3: Lolito -->
+          <div class=" relative overflow-hidden bg-[#F4F5F7]">
+            <div class="relative group">
+              <img class="w-full object-cover" src="./images/homepage/image3.png" alt="Lolito" loading="lazy" />
+              <span
+                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#E97171] text-sm font-medium text-white">-50%</span>
+              <!-- Overlay on hover -->
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to cart</button>
+                <div class="flex items-center gap-6 text-sm text-white">
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-share-line"></i> Share</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-arrow-left-right-line"></i> Compare</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-heart-line"></i> Like</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold text-[#3A3A3A]">Lolito</h3>
+              <p class="mt-1 text-sm text-[#898989]">Luxury big sofa</p>
+              <div class="mt-2 flex items-center gap-3">
+                <span class="text-lg font-bold text-[#3A3A3A]">Rp 7.000.000</span>
+                <span class="text-sm text-[#B0B0B0] line-through">Rp 14.000.000</span>
+              </div>
+            </div>
+          </div>
+          <!-- Product 4: Respira -->
+          <div class=" relative overflow-hidden bg-[#F4F5F7]">
+            <div class="relative group">
+              <img class="w-full object-cover" src="./images/homepage/image4.png" alt="Respira" loading="lazy" />
+              <span
+                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#2EC1AC] text-sm font-medium text-white">New</span>
+              <!-- Overlay on hover -->
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to cart</button>
+                <div class="flex items-center gap-6 text-sm text-white">
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-share-line"></i> Share</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-arrow-left-right-line"></i> Compare</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-heart-line"></i> Like</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold text-[#3A3A3A]">Respira</h3>
+              <p class="mt-1 text-sm text-[#898989]">Outdoor bar table and stool</p>
+              <div class="mt-2 flex items-center gap-3">
+                <span class="text-lg font-bold text-[#3A3A3A]">Rp 500.000</span>
+              </div>
+            </div>
+          </div>
+          <!-- Product 5: Grifo -->
+          <div class=" relative overflow-hidden bg-[#F4F5F7]">
+            <div class="relative group">
+              <img class="w-full  object-cover" src="./images/homepage/image6.png" alt="Grifo" loading="lazy" />
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to cart</button>
+                <div class="flex items-center gap-6 text-sm text-white">
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-share-line"></i> Share</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-arrow-left-right-line"></i> Compare</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-heart-line"></i> Like</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold text-[#3A3A3A]">Grifo</h3>
+              <p class="mt-1 text-sm text-[#898989]">Night lamp</p>
+              <div class="mt-2 flex items-center gap-3">
+                <span class="text-lg font-bold text-[#3A3A3A]">Rp 1.500.000</span>
+              </div>
+            </div>
+          </div>
+          <!-- Product 6: Muggo -->
+          <div class=" relative overflow-hidden bg-[#F4F5F7]">
+            <div class="relative group">
+              <img class="w-full object-cover" src="./images/homepage/image7.png" alt="Muggo" loading="lazy" />
+              <span
+                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#2EC1AC] text-sm font-medium text-white">New</span>
+              <!-- Overlay on hover -->
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to cart</button>
+                <div class="flex items-center gap-6 text-sm text-white">
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-share-line"></i> Share</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-arrow-left-right-line"></i> Compare</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-heart-line"></i> Like</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold text-[#3A3A3A]">Muggo</h3>
+              <p class="mt-1 text-sm text-[#898989]">Small mug</p>
+              <div class="mt-2 flex items-center gap-3">
+                <span class="text-lg font-bold text-[#3A3A3A]">Rp 150.000</span>
+              </div>
+            </div>
+          </div>
+          <!-- Product 7: Pingky -->
+          <div class=" relative overflow-hidden bg-[#F4F5F7]">
+            <div class="relative group">
+              <img class="w-full object-cover" src="./images/homepage/image8.png" alt="Pingky" loading="lazy" />
+              <span
+                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#E97171] text-sm font-medium text-white">-50%</span>
+              <!-- Overlay on hover -->
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to cart</button>
+                <div class="flex items-center gap-6 text-sm text-white">
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-share-line"></i> Share</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-arrow-left-right-line"></i> Compare</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-heart-line"></i> Like</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold text-[#3A3A3A]">Pingky</h3>
+              <p class="mt-1 text-sm text-[#898989]">Cute bed set</p>
+              <div class="mt-2 flex items-center gap-3">
+                <span class="text-lg font-bold text-[#3A3A3A]">Rp 7.000.000</span>
+                <span class="text-sm text-[#B0B0B0] line-through">Rp 14.000.000</span>
+              </div>
+            </div>
+          </div>
+          <!-- Product 8: Potty -->
+          <div class=" relative overflow-hidden bg-[#F4F5F7]">
+            <div class="relative group">
+              <img class="w-full object-cover" src="./images/homepage/image9.png" alt="Potty" loading="lazy" />
+              <span
+                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#2EC1AC] text-sm font-medium text-white">New</span>
+              <!-- Overlay on hover -->
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to cart</button>
+                <div class="flex items-center gap-6 text-sm text-white">
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-share-line"></i> Share</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-arrow-left-right-line"></i> Compare</span>
+                  <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
+                      class="ri-heart-line"></i> Like</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold text-[#3A3A3A]">Potty</h3>
+              <p class="mt-1 text-sm text-[#898989]">Minimalist flower pot</p>
+              <div class="mt-2 flex items-center gap-3">
+                <span class="text-lg font-bold text-[#3A3A3A]">Rp 500.000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Show More Button -->
+        <div class="mt-12 text-center">
+          <button
+            class="border-2 border-[#B88E4A] px-20 py-3 text-sm font-bold text-[#B88E4A] transition-colors hover:bg-[#B88E4A] hover:text-white">Show
+            More</button>
+        </div>
+      </div>
+    </section>
+    <section class="min-h-screen bg-[#FAF8F5] px-6 py-16 flex flex-col justify-center overflow-hidden">
+      <div class="mx-auto flex max-w-[1236px] items-center gap-8">
+        <!-- Left: Text Content -->
+        <div class="w-[30%]">
+          <h2 class="text-[40px] font-bold leading-[48px] text-[#333333]">
+            50+ Beautiful rooms<br />inspiration
+          </h2>
+          <p class="mt-4 text-base text-[#777777]">
+            Our designer already made a lot of beautiful prototype of rooms that
+            inspire you
+          </p>
+          <button class="mt-8 h-12 bg-[#B88E4A] px-12 text-sm font-semibold text-white">
+            Explore More
+          </button>
+        </div>
+        <!-- Center: Main Bedroom Image -->
+        <div class="relative w-[35%]">
+          <img class="w-full object-cover" src="images/homepage/Rectangle1.png" alt="Bed Room" />
+          <div class="absolute bottom-6 left-6 flex items-center gap-6 rounded-lg bg-white/80 p-6">
+            <div>
+              <span class="text-sm font-medium text-[#777777]">01 —— Bed Room</span>
+              <h3 class="mt-1 text-2xl font-bold text-[#333333]">
+                Inner Peace
+              </h3>
+            </div>
+            <button class="flex h-12 w-12 items-center justify-center rounded-full bg-[#B88E4A] text-xl text-white">
+              <i class="ri-arrow-right-line"></i>
+            </button>
+          </div>
+        </div>
+        <!-- Right: Carousel Preview -->
+        <div class=" h-full w-[35%] gap-10 flex flex-col ">
+          <div class="relative flex  items-center gap-10">
+            <img class="w-full object-cover" src="images/homepage/Rectangle2.png" alt="Dining Room" />
+            <button
+              class="absolute top-[50%] right-3 flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#B88E4A] shadow-lg">
+              <i class="ri-arrow-right-line text-xl"></i>
+            </button>
+            <img class="w-full object-cover" src="images/homepage/Rectangle3.png" alt="Dining Room" />
+          </div>
+          
+          <!-- Pagination Dots -->
+          <div class="mt-4 flex items-center justify-start gap-3">
+            <span class="inline-block h-3 w-3 rounded-full bg-[#B88E4A]"></span>
+            <span class="inline-block h-3 w-3 rounded-full bg-[#D8D8D8]"></span>
+            <span class="inline-block h-3 w-3 rounded-full bg-[#D8D8D8]"></span>
+            <span class="inline-block h-3 w-3 rounded-full bg-[#D8D8D8]"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="min-h-screen bg-white px-6 py-16">
+      <div class="mx-auto max-w-[1236px]">
+        <!-- Title -->
+        <div class="mb-14 text-center">
+          <p class="text-base text-[#333333]">Share your setup with</p>
+          <h2 class="mt-1 text-3xl font-bold text-[#222222]">
+            #FurniroFurniture
+          </h2>
+        </div>
+        <!-- Masonry Grid -->
+        <div class="columns-3 gap-4">
+          <!-- Column 1 -->
+          <div class="mb-4 break-inside-avoid">
+            <img class="w-full object-cover" src="images/homepage/Rectangle3.png" alt="Bookshelf with plants"
+              loading="lazy" />
+          </div>
+          <div class="mb-4 break-inside-avoid">
+            <img class="w-full object-cover" src="images/homepage/Rectangle5.png" alt="Desk workspace" loading="lazy" />
+          </div>
+          <div class="mb-4 break-inside-avoid">
+            <img class="w-full object-cover" src="images/homepage/Rectangle10.png" alt="Round stools" loading="lazy" />
+          </div>
+          <!-- Column 2 -->
+          <div class="mb-4 break-inside-avoid">
+            <img class="w-full object-cover" src="images/homepage/Rectangle4.png" alt="Study desk" loading="lazy" />
+          </div>
+          <div class="mb-4 break-inside-avoid">
+            <img class="w-full object-cover" src="images/homepage/Rectangle6.png" alt="Dining room" loading="lazy" />
+          </div>
+          <div class="mb-4 break-inside-avoid">
+            <img class="w-full object-cover" src="images/homepage/Rectangle11.png" alt="Kitchen island"
+              loading="lazy" />
+          </div>
+          <!-- Column 3 -->
+          <div class="mb-4 break-inside-avoid">
+            <img class="w-full object-cover" src="images/homepage/Rectangle8.png" alt="Bedroom" loading="lazy" />
+          </div>
+          <div class="mb-4 break-inside-avoid">
+            <img class="w-full object-cover" src="images/homepage/Rectangle9.png" alt="Dining table" loading="lazy" />
+          </div>
+          <div class="mb-4 break-inside-avoid">
+            <img class="w-full object-cover" src="images/homepage/Rectangle12.png" alt="Kitchen wall storage"
+              loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bg-white px-6 py-16">
+    <div class="mx-auto max-w-[1236px]">
+      <!-- Top row: 4 columns -->
+      <div class="flex w-full justify-around flex-wrap gap-10">
+        <!-- Brand Info -->
+        <div class="w-full sm:w-[calc(33.333%-2rem)] lg:w-[25%]">
+          <h2 class="text-2xl font-bold text-[#333333]">Furniro.</h2>
+          <p class="mt-6 text-sm leading-6 text-[#777777]">
+            400 University Drive Suite 200<br />
+            Coral Gables,<br />
+            FL 33134 USA
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div class="w-1/2 sm:w-[calc(16.666%-1rem)] lg:w-[16.666%]">
+          <h3 class="mb-6 text-sm font-normal text-[#999999]">Links</h3>
+          <ul class="space-y-5">
+            <li><a href="./home.html" class="text-base text-[#333333] no-underline hover:text-[#B88E4A]">Home</a></li>
+            <li><a href="./shop.html" class="text-base text-[#333333] no-underline hover:text-[#B88E4A]">Shop</a></li>
+            <li><a href="./blog.html" class="text-base text-[#333333] no-underline hover:text-[#B88E4A]">About</a></li>
+            <li><a href="./contact.html" class="text-base text-[#333333] no-underline hover:text-[#B88E4A]">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Help -->
+        <div class="w-1/2 sm:w-[calc(16.666%-1rem)] lg:w-[16.666%]">
+          <h3 class="mb-6 text-sm font-normal text-[#999999]">Help</h3>
+          <ul class="space-y-5">
+            <li><a href="#" class="text-base text-[#333333] no-underline hover:text-[#B88E4A]">Payment Options</a></li>
+            <li><a href="#" class="text-base text-[#333333] no-underline hover:text-[#B88E4A]">Returns</a></li>
+            <li><a href="#" class="text-base text-[#333333] no-underline hover:text-[#B88E4A]">Privacy Policies</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="w-full sm:w-[calc(33.333%-1rem)] lg:w-[25%]">
+          <h3 class="mb-6 text-sm font-normal text-[#999999]">Newsletter</h3>
+          <form class="flex items-center gap-2">
+            <input type="email" placeholder="Enter Your Email Address"
+              class="flex-1 border-b border-[#cccccc] bg-transparent pb-1 text-sm text-[#333333] outline-none placeholder:text-[#999999]" />
+            <button type="submit"
+              class="border-b border-[#333333] pb-1 text-sm font-bold uppercase text-[#333333] hover:text-[#B88E4A] hover:border-[#B88E4A]">
+              SUBSCRIBE
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <hr class="my-12 border-t border-[#dddddd]" />
+
+      <!-- Copyright -->
+      <p class="text-sm text-[#777777]">2023 Furniro. All rights reserved</p>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+
+</html>
