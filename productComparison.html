@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop-page</title>
+    <title>Product Comparison</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
         integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    <!-- ===== NAVIGATION ===== -->
     <nav class="p-5 w-full flex justify-between items-baseline">
         <div class="flex justify-center items-center gap-1">
             <div class="h-6">
@@ -35,14 +36,406 @@
             <i class="ri-shopping-cart-2-line"></i>
         </div>
     </nav>
-    <main>
 
+    <main>
+        <!-- ===== SECTION 1: HERO / BREADCRUMB ===== -->
+        <section class="relative flex h-[50vh] items-center justify-center">
+            <img class="absolute inset-0 h-full w-full object-cover" src="./images/Rectangle1.png"
+                alt="Comparison hero" />
+            <div class="relative z-10 text-center">
+                <div class="flex justify-center mb-2">
+                    <img class="h-8" src="./images/Logo.png" alt="" />
+                </div>
+                <h1 class="text-5xl font-bold text-[#333333] border-r border-l border-[#dddddd]">Product Comparison</h1>
+                <p class="mt-2 text-sm text-[#333333] border-r border-l border-[#dddddd]">Home &gt; Comparison</p>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 2: PRODUCT SELECTION BAR ===== -->
+        <section class="bg-white px-6 py-16">
+            <div class="mx-auto max-w-[1236px]">
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
+                    <!-- Column 1: Go to Product page -->
+                    <div class="flex flex-col items-center justify-center text-center">
+                        <p class="text-lg font-bold text-[#333333] border-r border-l border-[#dddddd]">
+                            Go to Product<br />page for more<br />Products
+                        </p>
+                        <a href="./shop.html"
+                            class="mt-4 text-sm font-semibold text-[#B88E2F] underline underline-offset-4">
+                            View More
+                        </a>
+                    </div>
+
+                    <!-- Column 2: Product Card 1 - Asgaard Sofa -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-full overflow-hidden rounded-lg bg-[#F9F1E7]">
+                            <img class="h-full w-full object-cover" src="./images/product/asgaardSofa.png"
+                                alt="Asgaard Sofa" />
+                        </div>
+                        <h3 class="mt-4 text-xl font-bold text-[#333333] border-r border-l border-[#dddddd]">Asgaard
+                            Sofa</h3>
+                        <p class="mt-2 text-lg font-bold text-[#B88E2F]">Rs. 250,000.00</p>
+                        <div class="mt-2 flex items-center gap-2">
+                            <div class="flex items-center gap-1 text-[#FFC700]">
+                                <i class="ri-star-fill text-sm"></i>
+                                <i class="ri-star-fill text-sm"></i>
+                                <i class="ri-star-fill text-sm"></i>
+                                <i class="ri-star-fill text-sm"></i>
+                                <i class="ri-star-fill text-sm"></i>
+                            </div>
+                            <span class="text-xs text-[#999999]">|</span>
+                            <span class="text-xs text-[#999999]">204 Reviews</span>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Product Card 2 - Outdoor Sofa Set -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-full overflow-hidden rounded-lg bg-[#F9F1E7]">
+                            <img class="h-full w-full object-cover" src="./images/product/outdoorSofa.png"
+                                alt="Outdoor Sofa Set" />
+                        </div>
+                        <h3 class="mt-4 text-xl font-bold text-[#333333] border-r border-l border-[#dddddd]">Outdoor
+                            Sofa Set</h3>
+                        <p class="mt-2 text-lg font-bold text-[#B88E2F]">Rs. 224,000.00</p>
+                        <div class="mt-2 flex items-center gap-2">
+                            <div class="flex items-center gap-1 text-[#FFC700]">
+                                <i class="ri-star-fill text-sm"></i>
+                                <i class="ri-star-fill text-sm"></i>
+                                <i class="ri-star-fill text-sm"></i>
+                                <i class="ri-star-fill text-sm"></i>
+                                <i class="ri-star-half-fill text-sm"></i>
+                            </div>
+                            <span class="text-xs text-[#999999]">|</span>
+                            <span class="text-xs text-[#999999]">145 Reviews</span>
+                        </div>
+                    </div>
+
+                    <!-- Column 4: Add A Product -->
+                    <div class="flex flex-col items-center justify-center text-center">
+                        <p class="text-lg font-bold text-[#333333] border-r border-l border-[#dddddd]">Add A Product</p>
+                        <button
+                            class="mt-4 flex items-center gap-2 rounded-lg bg-[#B88E2F] px-6 py-3 text-sm font-semibold text-white">
+                            Choose a Product
+                            <i class="ri-arrow-down-s-line text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 3: COMPARISON TABLE ===== -->
+        <section class="bg-white px-6 py-8">
+            <div class="mx-auto max-w-[1236px] overflow-x-auto">
+                <table class="w-full min-w-[700px] border-collapse text-left">
+                    <thead>
+                        <tr>
+                            <th class="w-1/4 py-4 pr-6 text-lg font-bold text-[#333333] ">
+                                General</th>
+                            <th
+                                class="w-1/4 py-4 px-6 text-lg font-bold text-[#333333] border-r border-l border-[#dddddd]">
+                                Asgaard Sofa</th>
+                            <th
+                                class="w-1/4 py-4 px-6 text-lg font-bold text-[#333333] border-r border-l border-[#dddddd]">
+                                Outdoor Sofa Set</th>
+                            <th class="w-1/4 py-4 pl-6"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Sales Package -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Sales Package</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">1 Sectional
+                                Sofa</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">1 Three
+                                Seater, 2 Single Seater</td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Model Number -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Model Number</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">TFCBUGR656H5
+                            </td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">DTUBUGR6368
+                            </td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Secondary Material -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Secondary Material</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">Solid Wood
+                            </td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">Solid Wood
+                            </td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Configuration -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Configuration</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">L-shaped
+                            </td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">L-shaped
+                            </td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Upholstery Material -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Upholstery Material</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">Fabric +
+                                Cotton</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">Fabric +
+                                Cotton</td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Upholstery Color -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Upholstery Color</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">Bright Grey
+                                and Lion</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">Bright Grey
+                                and Lion</td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                    </tbody>
+
+                    <!-- Product Section -->
+                    <thead>
+                        <tr>
+                            <th class="py-6 pr-6 text-lg font-bold text-[#333333] ">
+                                Product</th>
+                            <th class="py-6 px-6 border-r border-l border-[#dddddd]"></th>
+                            <th class="py-6 px-6 border-r border-l border-[#dddddd]"></th>
+                            <th class="py-6 pl-6 border-r border-l border-[#dddddd]"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Filling Material -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Filling Material</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">Foam</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">Matte</td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Finish Type -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Finish Type</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">Bright Grey
+                                and Lion</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">Bright Grey
+                                and Lion</td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Adjustable Headrest -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Adjustable Headrest</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">No</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">Yes</td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Maximum Load Capacity -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Maximum Load Capacity</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">280 KG</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">300 KG</td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Origin of Manufacture -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Origin of Manufacture</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">India</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">India</td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                    </tbody>
+
+                    <!-- Dimensions Section -->
+                    <thead>
+                        <tr>
+                            <th class="py-6 pr-6 text-lg font-bold text-[#333333]">
+                                Dimensions</th>
+                            <th class="py-6 px-6 border-r border-l border-[#dddddd]"></th>
+                            <th class="py-6 px-6 border-r border-l border-[#dddddd]"></th>
+                            <th class="py-6 pl-6 border-r border-l border-[#dddddd]"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Width -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Width</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">265.32 cm
+                            </td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">265.32 cm
+                            </td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Height -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Height</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">76 cm</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">80 cm</td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Depth -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Depth</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">167.64 cm
+                            </td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">170 cm</td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Weight -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Weight</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">45 KG</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">65 KG</td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Seat Height -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Seat Height</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">41.52 cm
+                            </td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">45 cm</td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Leg Height -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Leg Height</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">5.46 cm</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">5 cm</td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                    </tbody>
+
+                    <!-- Warranty Section -->
+                    <thead>
+                        <tr>
+                            <th class="py-6 pr-6 text-lg font-bold text-[#333333]">
+                                Warranty</th>
+                            <th class="py-6 px-6 border-r border-l border-[#dddddd]"></th>
+                            <th class="py-6 px-6 border-r border-l border-[#dddddd]"></th>
+                            <th class="py-6 pl-6 border-r border-l border-[#dddddd]"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Warranty Summary -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Warranty Summary</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">1 Year
+                                Manufacturing Warranty</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">1.2 Year
+                                Manufacturing Warranty</td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Warranty Service Type -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Warranty Service Type</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">
+                                <a href="mailto:operations@treivfurniture.com"
+                                    class="text-[#B88E2F] underline">operations@treivfurniture.com</a>
+                            </td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">
+                                <a href="mailto:operations@treivfurniture.com"
+                                    class="text-[#B88E2F] underline">operations@treivfurniture.com</a>
+                            </td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Covered in Warranty -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Covered in Warranty</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">
+                                Manufacturing Defects</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">
+                                Manufacturing Defects</td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Not Covered in Warranty -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Not Covered in Warranty</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">Damage due
+                                to misuse or natural wear and tear
+                            </td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">Damage due
+                                to misuse or natural wear and tear
+                            </td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <!-- Domestic Warranty -->
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]">Domestic Warranty</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">1 Year</td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]">1.2 Year
+                            </td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 pr-6 text-sm text-[#777777]"></td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]"><button
+                                    class="rounded-lg bg-[#B88E2F] px-10 py-3 text-sm font-bold text-white transition-colors hover:bg-[#a07a28]">
+                                    Add To Cart
+                                </button></td>
+                            <td class="py-4 px-6 text-sm text-[#333333] border-r border-l border-[#dddddd]"><button
+                                    class="rounded-lg bg-[#B88E2F] px-10 py-3 text-sm font-bold text-white transition-colors hover:bg-[#a07a28]">
+                                    Add To Cart
+                                </button></td>
+                            <td class="py-4 pl-6"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 5: SERVICE BANNER ===== -->
+        <section class="bg-[#F9F1E7] px-6 py-16">
+            <div class="mx-auto max-w-[1236px]">
+                <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                    <!-- High Quality -->
+                    <div class="flex items-center gap-4">
+                        <i class="ri-trophy-line text-4xl text-[#333333] border-r border-l border-[#dddddd]"></i>
+                        <div>
+                            <h4 class="text-lg font-bold text-[#333333] border-r border-l border-[#dddddd]">High Quality
+                            </h4>
+                            <p class="text-sm text-[#777777]">crafted from top materials</p>
+                        </div>
+                    </div>
+                    <!-- Warranty Protection -->
+                    <div class="flex items-center gap-4">
+                        <i class="ri-shield-check-line text-4xl text-[#333333] border-r border-l border-[#dddddd]"></i>
+                        <div>
+                            <h4 class="text-lg font-bold text-[#333333] border-r border-l border-[#dddddd]">Warranty
+                                Protection</h4>
+                            <p class="text-sm text-[#777777]">Over 2 years</p>
+                        </div>
+                    </div>
+                    <!-- Free Shipping -->
+                    <div class="flex items-center gap-4">
+                        <i class="ri-truck-line text-4xl text-[#333333] border-r border-l border-[#dddddd]"></i>
+                        <div>
+                            <h4 class="text-lg font-bold text-[#333333] border-r border-l border-[#dddddd]">Free
+                                Shipping</h4>
+                            <p class="text-sm text-[#777777]">Order over 150 $</p>
+                        </div>
+                    </div>
+                    <!-- 24/7 Support -->
+                    <div class="flex items-center gap-4">
+                        <i
+                            class="ri-customer-service-2-line text-4xl text-[#333333] border-r border-l border-[#dddddd]"></i>
+                        <div>
+                            <h4 class="text-lg font-bold text-[#333333] border-r border-l border-[#dddddd]">24 / 7
+                                Support</h4>
+                            <p class="text-sm text-[#777777]">Dedicated support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <!-- ===== FOOTER ===== -->
     <footer class="bg-white px-6 py-16">
         <div class="mx-auto max-w-[1236px]">
-            <div class="flex  w-full justify-around flex-wrap gap-10 ">
+            <div class="flex w-full justify-around flex-wrap gap-10">
                 <div class="w-full sm:w-[calc(33.333%-2rem)] lg:w-[25%]">
-                    <h2 class="text-2xl font-bold text-[#333333]">Funiro.</h2>
+                    <h2 class="text-2xl font-bold text-[#333333] border-r border-l border-[#dddddd]">Furniro.</h2>
                     <p class="mt-6 text-sm leading-6 text-[#777777]">
                         400 University Drive Suite 200<br />
                         Coral Gables,<br />
@@ -53,24 +446,30 @@
                     <h3 class="mb-6 text-sm font-normal text-[#999999]">Links</h3>
                     <ul class="space-y-5">
                         <li><a href="./index.html"
-                                class="text-base text-[#333333] no-underline hover:text-[#B88E2F]">Home</a></li>
+                                class="text-base text-[#333333] border-r border-l border-[#dddddd] no-underline hover:text-[#B88E2F]">Home</a>
+                        </li>
                         <li><a href="./shop.html"
-                                class="text-base text-[#333333] no-underline hover:text-[#B88E2F]">Shop</a></li>
+                                class="text-base text-[#333333] border-r border-l border-[#dddddd] no-underline hover:text-[#B88E2F]">Shop</a>
+                        </li>
                         <li><a href="./blog.html"
-                                class="text-base text-[#333333] no-underline hover:text-[#B88E2F]">About</a></li>
+                                class="text-base text-[#333333] border-r border-l border-[#dddddd] no-underline hover:text-[#B88E2F]">About</a>
+                        </li>
                         <li><a href="./contact.html"
-                                class="text-base text-[#333333] no-underline hover:text-[#B88E2F]">Contact</a>
+                                class="text-base text-[#333333] border-r border-l border-[#dddddd] no-underline hover:text-[#B88E2F]">Contact</a>
                         </li>
                     </ul>
                 </div>
                 <div class="w-1/2 sm:w-[calc(16.666%-1rem)] lg:w-[16.666%]">
                     <h3 class="mb-6 text-sm font-normal text-[#999999]">Help</h3>
                     <ul class="space-y-5">
-                        <li><a href="#" class="text-base text-[#333333] no-underline hover:text-[#B88E2F]">Payment
+                        <li><a href="#"
+                                class="text-base text-[#333333] border-r border-l border-[#dddddd] no-underline hover:text-[#B88E2F]">Payment
                                 Options</a></li>
-                        <li><a href="#" class="text-base text-[#333333] no-underline hover:text-[#B88E2F]">Returns</a>
+                        <li><a href="#"
+                                class="text-base text-[#333333] border-r border-l border-[#dddddd] no-underline hover:text-[#B88E2F]">Returns</a>
                         </li>
-                        <li><a href="#" class="text-base text-[#333333] no-underline hover:text-[#B88E2F]">Privacy
+                        <li><a href="#"
+                                class="text-base text-[#333333] border-r border-l border-[#dddddd] no-underline hover:text-[#B88E2F]">Privacy
                                 Policies</a></li>
                     </ul>
                 </div>
@@ -78,16 +477,16 @@
                     <h3 class="mb-6 text-sm font-normal text-[#999999]">Newsletter</h3>
                     <form class="flex items-center gap-2">
                         <input type="email" placeholder="Enter Your Email Address"
-                            class="flex-1 border-b border-[#cccccc] bg-transparent pb-1 text-sm text-[#333333] outline-none placeholder:text-[#999999]" />
+                            class="flex-1 border-b border-[#cccccc] bg-transparent pb-1 text-sm text-[#333333] border-r border-l border-[#dddddd] outline-none placeholder:text-[#999999]" />
                         <button type="submit"
-                            class="border-b border-[#333333] pb-1 text-sm font-bold uppercase text-[#333333] hover:text-[#B88E2F] hover:border-[#B88E2F]">
+                            class="border-b border-[#333333] border-r border-l border-[#dddddd] pb-1 text-sm font-bold uppercase text-[#333333] border-r border-l border-[#dddddd] hover:text-[#B88E2F] hover:border-[#B88E2F]">
                             SUBSCRIBE
                         </button>
                     </form>
                 </div>
             </div>
             <hr class="my-12 border-t border-[#dddddd]" />
-            <p class="text-sm text-[#777777]">2023 furino. All rights reserved</p>
+            <p class="text-sm text-[#777777]">2023 Furniro. All rights reserved</p>
         </div>
     </footer>
 </body>
