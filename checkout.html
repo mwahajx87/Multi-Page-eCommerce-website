@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop-page</title>
+    <title>Checkout - Furniro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
         integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -12,6 +16,22 @@
         integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #B88E2F;
+        }
+
+        .payment-radio input[type="radio"]:checked+label {
+            font-weight: 600;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,14 +55,202 @@
             <i class="ri-shopping-cart-2-line"></i>
         </div>
     </nav>
-    <main>
 
+    <main>
+        <section class="relative flex h-[40vh] items-center justify-center">
+            <img class="absolute inset-0 h-full w-full object-cover" src="./images/Rectangle1.png"
+                alt="Checkout hero" />
+            <div class="absolute inset-0 bg-white/60"></div>
+            <div class="relative z-10 text-center">
+                <h1 class="text-5xl font-bold text-[#333333]">Checkout</h1>
+                <p class="mt-2 text-sm text-[#666666]">Home &gt; Checkout</p>
+            </div>
+        </section>
+
+        <section class="bg-white px-6 py-16">
+            <div class="mx-auto max-w-[1236px]">
+                <div class="flex flex-col lg:flex-row gap-10">
+                    <div class="w-full lg:w-[58%]">
+                        <h2 class="text-2xl font-semibold text-[#333333] mb-8">Billing details</h2>
+                        <form>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-sm font-medium text-[#333333] mb-2">First Name</label>
+                                    <input type="text"
+                                        class="w-full h-11 border border-[#E0E0E0] rounded-md px-3 text-sm text-[#333333] bg-white" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-[#333333] mb-2">Last Name</label>
+                                    <input type="text"
+                                        class="w-full h-11 border border-[#E0E0E0] rounded-md px-3 text-sm text-[#333333] bg-white" />
+                                </div>
+                                <div class="sm:col-span-2">
+                                    <label class="block text-sm font-medium text-[#666666] mb-2">Company Name
+                                        (Optional)</label>
+                                    <input type="text"
+                                        class="w-full h-11 border border-[#E0E0E0] rounded-md px-3 text-sm text-[#333333] bg-white" />
+                                </div>
+                                <div class="sm:col-span-2">
+                                    <label class="block text-sm font-medium text-[#333333] mb-2">Country /
+                                        Region</label>
+                                    <div class="relative">
+                                        <select
+                                            class="w-full h-11 border border-[#E0E0E0] rounded-md px-3 text-sm text-[#333333] bg-white appearance-none">
+                                            <option>Sri Lanka</option>
+                                            <option>United States</option>
+                                            <option>United Kingdom</option>
+                                            <option>India</option>
+                                        </select>
+                                        <i
+                                            class="ri-arrow-down-s-line absolute right-3 top-1/2 -translate-y-1/2 text-[#666666] text-lg pointer-events-none"></i>
+                                    </div>
+                                </div>
+                                <div class="sm:col-span-2">
+                                    <label class="block text-sm font-medium text-[#333333] mb-2">Street address</label>
+                                    <input type="text"
+                                        class="w-full h-11 border border-[#E0E0E0] rounded-md px-3 text-sm text-[#333333] bg-white" />
+                                </div>
+                                <div class="sm:col-span-2">
+                                    <label class="block text-sm font-medium text-[#333333] mb-2">Town / City</label>
+                                    <input type="text"
+                                        class="w-full h-11 border border-[#E0E0E0] rounded-md px-3 text-sm text-[#333333] bg-white" />
+                                </div>
+                                <div class="sm:col-span-2">
+                                    <label class="block text-sm font-medium text-[#333333] mb-2">Province</label>
+                                    <div class="relative">
+                                        <select
+                                            class="w-full h-11 border border-[#E0E0E0] rounded-md px-3 text-sm text-[#333333] bg-white appearance-none">
+                                            <option>Western Province</option>
+                                            <option>Central Province</option>
+                                            <option>Southern Province</option>
+                                        </select>
+                                        <i
+                                            class="ri-arrow-down-s-line absolute right-3 top-1/2 -translate-y-1/2 text-[#666666] text-lg pointer-events-none"></i>
+                                    </div>
+                                </div>
+                                <div class="sm:col-span-2">
+                                    <label class="block text-sm font-medium text-[#333333] mb-2">ZIP code</label>
+                                    <input type="text"
+                                        class="w-full h-11 border border-[#E0E0E0] rounded-md px-3 text-sm text-[#333333] bg-white" />
+                                </div>
+                                <div class="sm:col-span-2">
+                                    <label class="block text-sm font-medium text-[#333333] mb-2">Phone</label>
+                                    <input type="text"
+                                        class="w-full h-11 border border-[#E0E0E0] rounded-md px-3 text-sm text-[#333333] bg-white" />
+                                </div>
+                                <div class="sm:col-span-2">
+                                    <label class="block text-sm font-medium text-[#333333] mb-2">Email address</label>
+                                    <input type="email"
+                                        class="w-full h-11 border border-[#E0E0E0] rounded-md px-3 text-sm text-[#333333] bg-white" />
+                                </div>
+                                <div class="sm:col-span-2">
+                                    <label class="block text-sm font-medium text-[#666666] mb-2">Additional
+                                        information</label>
+                                    <textarea
+                                        class="w-full h-20 border border-[#E0E0E0] rounded-md px-3 py-2 text-sm text-[#333333] bg-white resize-none"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="w-full lg:w-[38%]">
+                        <h2 class="text-2xl font-semibold text-[#333333] mb-8">Billing details</h2>
+                        <div class="border-b border-[#E0E0E0] pb-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-base font-semibold text-[#333333]">Product</span>
+                                <span class="text-base font-semibold text-[#333333]">Subtotal</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-[#333333]">Asgaard sofa <span class="text-[#999999]">x
+                                        1</span></span>
+                                <span class="text-sm text-[#666666]">Rs. 250,000.00</span>
+                            </div>
+                        </div>
+
+                        <div class="border-b border-[#E0E0E0] pb-6 mt-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-sm text-[#666666]">Subtotal</span>
+                                <span class="text-sm text-[#666666]">Rs. 250,000.00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-base text-[#333333]">Total</span>
+                                <span class="text-lg font-bold text-[#B88E2F]">Rs. 250,000.00</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <div class="payment-radio mb-4">
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="radio" name="payment" value="bank" checked
+                                        class="accent-[#333333] w-4 h-4" />
+                                    <span class="text-sm font-medium text-[#333333]">Direct Bank Transfer</span>
+                                </label>
+                                <p class="text-xs text-[#666666] mt-2 ml-7 leading-relaxed">
+                                    Make your payment directly into our bank account. Please use your Order ID as the
+                                    payment reference. Your order will not be shipped until the funds have cleared in
+                                    our account.
+                                </p>
+                            </div>
+                            <div class="payment-radio mb-4">
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="radio" name="payment" value="cod" class="accent-[#333333] w-4 h-4" />
+                                    <span class="text-sm text-[#333333]">Cash On Delivery</span>
+                                </label>
+                            </div>
+                            <p class="text-xs text-[#666666] mt-6 leading-relaxed">
+                                Your personal data will be used to support your experience throughout this website, to
+                                manage access to your account, and for other purposes described in our <a href="#"
+                                    class="text-[#B88E2F] underline font-medium">privacy policy</a>.
+                            </p>
+                            <button type="submit"
+                                class="mt-8 w-full py-3 px-6 border-2 border-[#B88E2F] rounded-lg text-base font-semibold text-[#B88E2F] bg-white hover:bg-[#F9F1E7] transition-colors cursor-pointer">
+                                Place order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-[#F9F1E7] px-6 py-16">
+            <div class="mx-auto grid max-w-[1236px] grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="flex items-center gap-4">
+                    <i class="ri-trophy-line text-3xl text-[#333333]"></i>
+                    <div>
+                        <h3 class="text-lg font-bold text-[#333333]">High Quality</h3>
+                        <p class="text-sm text-[#898989]">crafted from top materials</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="ri-shield-check-line text-3xl text-[#333333]"></i>
+                    <div>
+                        <h3 class="text-lg font-bold text-[#333333]">Warranty Protection</h3>
+                        <p class="text-sm text-[#898989]">Over 2 years</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="ri-truck-line text-3xl text-[#333333]"></i>
+                    <div>
+                        <h3 class="text-lg font-bold text-[#333333]">Free Shipping</h3>
+                        <p class="text-sm text-[#898989]">Order over 150 $</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="ri-customer-service-2-line text-3xl text-[#333333]"></i>
+                    <div>
+                        <h3 class="text-lg font-bold text-[#333333]">24 / 7 Support</h3>
+                        <p class="text-sm text-[#898989]">Dedicated support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer class="bg-white px-6 py-16">
+
+    <footer class="bg-white px-6 py-16 border-t border-[#dddddd]">
         <div class="mx-auto max-w-[1236px]">
-            <div class="flex  w-full justify-around flex-wrap gap-10 ">
+            <div class="flex w-full justify-around flex-wrap gap-10">
                 <div class="w-full sm:w-[calc(33.333%-2rem)] lg:w-[25%]">
-                    <h2 class="text-2xl font-bold text-[#333333]">Funiro.</h2>
+                    <h2 class="text-2xl font-bold text-[#333333]">Furniro.</h2>
                     <p class="mt-6 text-sm leading-6 text-[#777777]">
                         400 University Drive Suite 200<br />
                         Coral Gables,<br />
@@ -59,8 +267,7 @@
                         <li><a href="./blog.html"
                                 class="text-base text-[#333333] no-underline hover:text-[#B88E2F]">About</a></li>
                         <li><a href="./contact.html"
-                                class="text-base text-[#333333] no-underline hover:text-[#B88E2F]">Contact</a>
-                        </li>
+                                class="text-base text-[#333333] no-underline hover:text-[#B88E2F]">Contact</a></li>
                     </ul>
                 </div>
                 <div class="w-1/2 sm:w-[calc(16.666%-1rem)] lg:w-[16.666%]">
@@ -87,9 +294,10 @@
                 </div>
             </div>
             <hr class="my-12 border-t border-[#dddddd]" />
-            <p class="text-sm text-[#777777]">2023 furino. All rights reserved</p>
+            <p class="text-sm text-[#777777]">2023 Furniro. All rights reserved</p>
         </div>
     </footer>
+    <script src="app.js"></script>
 </body>
 
 </html>
