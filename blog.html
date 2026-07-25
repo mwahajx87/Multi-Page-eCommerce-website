@@ -15,51 +15,73 @@
 </head>
 
 <body>
-    <nav class="p-5 w-full flex justify-between items-baseline">
+    <nav class="p-5 w-full flex justify-between items-center relative">
         <div class="flex justify-center items-center gap-1">
             <div class="h-6">
                 <img class="h-full" src="./images/Logo.png" alt="" />
             </div>
             <a class="text-2xl font-bold" href="./index.html">Furniro</a>
         </div>
-        <div class="text-m flex justify-center gap-15">
+
+        <button id="menuToggle" class="lg:hidden text-2xl cursor-pointer" aria-label="Toggle navigation">
+            <i class="ri-menu-line"></i>
+        </button>
+
+        <div class="hidden lg:flex text-m justify-center gap-15">
             <a class="underline-none" href="./index.html">Home</a>
             <a class="underline-none" href="./shop.html">Shop</a>
             <a class="underline-none" href="./blog.html">About</a>
             <a class="underline-none" href="./contact.html">Contact</a>
         </div>
-        <div class="flex justify-center items-center gap-8 text-xl">
+
+        <div class="hidden lg:flex justify-center items-center gap-8 text-xl">
             <i class="ri-user-3-line"></i>
             <i class="ri-search-line"></i>
             <i class="ri-heart-line"></i>
             <i class="ri-shopping-cart-2-line"></i>
         </div>
+
+        <!-- Mobile menu -->
+        <div id="mobileMenu"
+            class="hidden lg:hidden absolute top-full left-0 w-full bg-white shadow-md z-50 flex-col gap-6 p-6">
+            <a class="underline-none text-[#333333]" href="./index.html">Home</a>
+            <a class="underline-none text-[#333333]" href="./shop.html">Shop</a>
+            <a class="underline-none text-[#333333]" href="./blog.html">About</a>
+            <a class="underline-none text-[#333333]" href="./contact.html">Contact</a>
+            <div class="flex items-center gap-8 text-xl pt-4 border-t border-[#eeeeee]">
+                <i class="ri-user-3-line"></i>
+                <i class="ri-search-line"></i>
+                <i class="ri-heart-line"></i>
+                <i class="ri-shopping-cart-2-line"></i>
+            </div>
+        </div>
     </nav>
 
     <main>
-        <section class="relative flex h-[50vh] items-center justify-center">
+        <section class="relative flex h-[35vh] sm:h-[40vh] md:h-[50vh] items-center justify-center">
             <img class="absolute inset-0 h-full w-full object-cover" src="./images/Rectangle1.png" alt="Blog hero" />
-            <div class="relative z-10 text-center">
+            <div class="relative z-10 text-center px-4">
                 <div class="flex justify-center mb-2">
                     <img class="h-8" src="./images/Logo.png" alt="" />
                 </div>
-                <h1 class="text-5xl font-bold text-[#333333]">Blog</h1>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-[#333333]">Blog</h1>
                 <p class="mt-2 text-sm text-[#333333]">Home &gt; Blog</p>
             </div>
         </section>
 
-        <section class="bg-white px-6 py-16">
-            <div class="mx-auto max-w-[1236px] flex flex-col lg:flex-row gap-12">
-                <div class="lg:w-[65%] space-y-16">
+        <section class="bg-white px-4 sm:px-6 py-10 sm:py-16">
+            <div class="mx-auto max-w-[1236px] flex flex-col lg:flex-row gap-10 lg:gap-12">
+                <div class="w-full lg:w-[65%] space-y-12 sm:space-y-16">
                     <article>
                         <img class="w-full rounded-lg object-cover" src="./images/blog/Rectangle1.png"
                             alt="Going all-in with millennial design" loading="lazy" />
-                        <div class="mt-4 flex items-center gap-6 text-sm text-[#9F9F9F]">
+                        <div class="mt-4 flex flex-wrap items-center gap-4 sm:gap-6 text-sm text-[#9F9F9F]">
                             <span class="flex items-center gap-1"><i class="ri-user-3-line"></i> Admin</span>
                             <span class="flex items-center gap-1"><i class="ri-calendar-line"></i> 14 Oct 2022</span>
                             <span class="flex items-center gap-1"><i class="ri-price-tag-3-line"></i> Place</span>
                         </div>
-                        <h2 class="mt-3 text-3xl font-bold text-[#333333]">Going all-in with millennial design</h2>
+                        <h2 class="mt-3 text-2xl sm:text-3xl font-bold text-[#333333]">Going all-in with millennial
+                            design</h2>
                         <p class="mt-3 text-base leading-7 text-[#9F9F9F]">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -75,12 +97,13 @@
                     <article>
                         <img class="w-full rounded-lg object-cover" src="./images/blog/Rectangle2.png"
                             alt="Exploring new ways of decorating" loading="lazy" />
-                        <div class="mt-4 flex items-center gap-6 text-sm text-[#9F9F9F]">
+                        <div class="mt-4 flex flex-wrap items-center gap-4 sm:gap-6 text-sm text-[#9F9F9F]">
                             <span class="flex items-center gap-1"><i class="ri-user-3-line"></i> Admin</span>
                             <span class="flex items-center gap-1"><i class="ri-calendar-line"></i> 14 Oct 2022</span>
                             <span class="flex items-center gap-1"><i class="ri-price-tag-3-line"></i> Place</span>
                         </div>
-                        <h2 class="mt-3 text-3xl font-bold text-[#333333]">Exploring new ways of decorating</h2>
+                        <h2 class="mt-3 text-2xl sm:text-3xl font-bold text-[#333333]">Exploring new ways of
+                            decorating</h2>
                         <p class="mt-3 text-base leading-7 text-[#9F9F9F]">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -96,12 +119,13 @@
                     <article>
                         <img class="w-full rounded-lg object-cover" src="./images/blog/Rectangle3.png"
                             alt="Handmade pieces that took time to make" loading="lazy" />
-                        <div class="mt-4 flex items-center gap-6 text-sm text-[#9F9F9F]">
+                        <div class="mt-4 flex flex-wrap items-center gap-4 sm:gap-6 text-sm text-[#9F9F9F]">
                             <span class="flex items-center gap-1"><i class="ri-user-3-line"></i> Admin</span>
                             <span class="flex items-center gap-1"><i class="ri-calendar-line"></i> 14 Oct 2022</span>
                             <span class="flex items-center gap-1"><i class="ri-price-tag-3-line"></i> Place</span>
                         </div>
-                        <h2 class="mt-3 text-3xl font-bold text-[#333333]">Handmade pieces that took time to make</h2>
+                        <h2 class="mt-3 text-2xl sm:text-3xl font-bold text-[#333333]">Handmade pieces that took time
+                            to make</h2>
                         <p class="mt-3 text-base leading-7 text-[#9F9F9F]">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -114,15 +138,15 @@
                             more</a>
                     </article>
 
-                    <div class="flex justify-center gap-4">
-                        <button class="rounded bg-[#B88E2F] px-5 py-2 text-sm text-white">1</button>
-                        <button class="rounded bg-[#F9F1E7] px-5 py-2 text-sm text-[#333333]">2</button>
-                        <button class="rounded bg-[#F9F1E7] px-5 py-2 text-sm text-[#333333]">3</button>
-                        <button class="rounded bg-[#F9F1E7] px-7 py-2 text-sm text-[#333333]">Next</button>
+                    <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
+                        <button class="rounded bg-[#B88E2F] px-4 sm:px-5 py-2 text-sm text-white">1</button>
+                        <button class="rounded bg-[#F9F1E7] px-4 sm:px-5 py-2 text-sm text-[#333333]">2</button>
+                        <button class="rounded bg-[#F9F1E7] px-4 sm:px-5 py-2 text-sm text-[#333333]">3</button>
+                        <button class="rounded bg-[#F9F1E7] px-5 sm:px-7 py-2 text-sm text-[#333333]">Next</button>
                     </div>
                 </div>
 
-                <aside class="lg:w-[35%] space-y-10">
+                <aside class="w-full lg:w-[35%] space-y-10">
                     <div class="relative">
                         <input type="text" placeholder=""
                             class="w-full rounded-lg border border-[#cccccc] px-5 py-3 text-sm text-[#333333] outline-none focus:border-[#B88E2F]" />
@@ -131,7 +155,7 @@
                     </div>
 
                     <div>
-                        <h3 class="mb-6 text-2xl font-bold text-[#333333]">Categories</h3>
+                        <h3 class="mb-6 text-xl sm:text-2xl font-bold text-[#333333]">Categories</h3>
                         <ul class="space-y-5">
                             <li class="flex justify-between text-base text-[#333333]">
                                 <span class="hover:text-[#B88E2F] cursor-pointer">Crafts</span>
@@ -157,10 +181,10 @@
                     </div>
 
                     <div>
-                        <h3 class="mb-6 text-2xl font-bold text-[#333333]">Recent Posts</h3>
+                        <h3 class="mb-6 text-xl sm:text-2xl font-bold text-[#333333]">Recent Posts</h3>
                         <div class="space-y-6">
                             <div class="flex gap-4">
-                                <img class="h-16 w-16 rounded object-cover" src="./images/blog/Rectangle4.png"
+                                <img class="h-16 w-16 shrink-0 rounded object-cover" src="./images/blog/Rectangle4.png"
                                     alt="Going all-in with millennial design" loading="lazy" />
                                 <div>
                                     <h4 class="text-sm font-bold text-[#333333] hover:text-[#B88E2F] cursor-pointer">
@@ -169,7 +193,7 @@
                                 </div>
                             </div>
                             <div class="flex gap-4">
-                                <img class="h-16 w-16 rounded object-cover" src="./images/blog/Rectangle5.png"
+                                <img class="h-16 w-16 shrink-0 rounded object-cover" src="./images/blog/Rectangle5.png"
                                     alt="Exploring new ways of decorating" loading="lazy" />
                                 <div>
                                     <h4 class="text-sm font-bold text-[#333333] hover:text-[#B88E2F] cursor-pointer">
@@ -178,7 +202,7 @@
                                 </div>
                             </div>
                             <div class="flex gap-4">
-                                <img class="h-16 w-16 rounded object-cover" src="./images/blog/Rectangle6.png"
+                                <img class="h-16 w-16 shrink-0 rounded object-cover" src="./images/blog/Rectangle6.png"
                                     alt="Handmade pieces that took time to make" loading="lazy" />
                                 <div>
                                     <h4 class="text-sm font-bold text-[#333333] hover:text-[#B88E2F] cursor-pointer">
@@ -187,7 +211,7 @@
                                 </div>
                             </div>
                             <div class="flex gap-4">
-                                <img class="h-16 w-16 rounded object-cover" src="./images/blog/Rectangle7.png"
+                                <img class="h-16 w-16 shrink-0 rounded object-cover" src="./images/blog/Rectangle7.png"
                                     alt="Modern home in Milan" loading="lazy" />
                                 <div>
                                     <h4 class="text-sm font-bold text-[#333333] hover:text-[#B88E2F] cursor-pointer">
@@ -196,7 +220,7 @@
                                 </div>
                             </div>
                             <div class="flex gap-4">
-                                <img class="h-16 w-16 rounded object-cover" src="./images/blog/Rectangle8.png"
+                                <img class="h-16 w-16 shrink-0 rounded object-cover" src="./images/blog/Rectangle8.png"
                                     alt="Colorful office redesign" loading="lazy" />
                                 <div>
                                     <h4 class="text-sm font-bold text-[#333333] hover:text-[#B88E2F] cursor-pointer">
@@ -210,7 +234,7 @@
             </div>
         </section>
 
-        <section class="bg-[#F9F1E7] px-6 py-16">
+        <section class="bg-[#F9F1E7] px-4 sm:px-6 py-12 sm:py-16">
             <div class="mx-auto grid max-w-[1236px] grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 <div class="flex items-center gap-4">
                     <i class="ri-trophy-line text-3xl text-[#333333]"></i>
@@ -244,9 +268,9 @@
         </section>
     </main>
 
-    <footer class="bg-white px-6 py-16">
+    <footer class="bg-white px-4 sm:px-6 py-12 sm:py-16">
         <div class="mx-auto max-w-[1236px]">
-            <div class="flex  w-full justify-around flex-wrap gap-10 ">
+            <div class="flex w-full justify-around flex-wrap gap-10">
                 <div class="w-full sm:w-[calc(33.333%-2rem)] lg:w-[25%]">
                     <h2 class="text-2xl font-bold text-[#333333]">Funiro.</h2>
                     <p class="mt-6 text-sm leading-6 text-[#777777]">
@@ -282,9 +306,9 @@
                 </div>
                 <div class="w-full sm:w-[calc(33.333%-1rem)] lg:w-[25%]">
                     <h3 class="mb-6 text-sm font-normal text-[#999999]">Newsletter</h3>
-                    <form class="flex items-center gap-2">
+                    <form class="flex flex-wrap items-center gap-2">
                         <input type="email" placeholder="Enter Your Email Address"
-                            class="flex-1 border-b border-[#cccccc] bg-transparent pb-1 text-sm text-[#333333] outline-none placeholder:text-[#999999]" />
+                            class="flex-1 min-w-0 border-b border-[#cccccc] bg-transparent pb-1 text-sm text-[#333333] outline-none placeholder:text-[#999999]" />
                         <button type="submit"
                             class="border-b border-[#333333] pb-1 text-sm font-bold uppercase text-[#333333] hover:text-[#B88E2F] hover:border-[#B88E2F]">
                             SUBSCRIBE
@@ -296,6 +320,8 @@
             <p class="text-sm text-[#777777]">2023 furino. All rights reserved</p>
         </div>
     </footer>
+
+    <script src="./app.js"></script>
 </body>
 
 </html>

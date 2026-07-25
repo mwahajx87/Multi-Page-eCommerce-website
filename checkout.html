@@ -16,64 +16,72 @@
         integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style>
-        * {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #B88E2F;
-        }
-
-        .payment-radio input[type="radio"]:checked+label {
-            font-weight: 600;
-        }
-    </style>
+    
 </head>
 
 <body>
-    <nav class="p-5 w-full flex justify-between items-baseline">
+       <nav class="p-5 w-full flex justify-between items-center relative">
         <div class="flex justify-center items-center gap-1">
             <div class="h-6">
                 <img class="h-full" src="./images/Logo.png" alt="" />
             </div>
             <a class="text-2xl font-bold" href="./index.html">Furniro</a>
         </div>
-        <div class="text-m flex justify-center gap-15">
+
+        <button id="menuToggle" class="lg:hidden text-2xl cursor-pointer" aria-label="Toggle navigation">
+            <i class="ri-menu-line"></i>
+        </button>
+
+        <div class="hidden lg:flex text-m justify-center gap-15">
             <a class="underline-none" href="./index.html">Home</a>
             <a class="underline-none" href="./shop.html">Shop</a>
             <a class="underline-none" href="./blog.html">About</a>
             <a class="underline-none" href="./contact.html">Contact</a>
         </div>
-        <div class="flex justify-center items-center gap-8 text-xl">
+
+        <div class="hidden lg:flex justify-center items-center gap-8 text-xl">
             <i class="ri-user-3-line"></i>
             <i class="ri-search-line"></i>
             <i class="ri-heart-line"></i>
             <i class="ri-shopping-cart-2-line"></i>
         </div>
+
+        <!-- Mobile menu -->
+        <div id="mobileMenu"
+            class="hidden lg:hidden absolute top-full left-0 w-full bg-white shadow-md z-50 flex-col gap-6 p-6">
+            <a class="underline-none text-[#333333]" href="./index.html">Home</a>
+            <a class="underline-none text-[#333333]" href="./shop.html">Shop</a>
+            <a class="underline-none text-[#333333]" href="./blog.html">About</a>
+            <a class="underline-none text-[#333333]" href="./contact.html">Contact</a>
+            <div class="flex items-center gap-8 text-xl pt-4 border-t border-[#eeeeee]">
+                <i class="ri-user-3-line"></i>
+                <i class="ri-search-line"></i>
+                <i class="ri-heart-line"></i>
+                <i class="ri-shopping-cart-2-line"></i>
+            </div>
+        </div>
     </nav>
 
+
     <main>
-        <section class="relative flex h-[40vh] items-center justify-center">
+        <section class="relative flex h-[28vh] sm:h-[32vh] md:h-[36vh] lg:h-[40vh] items-center justify-center">
             <img class="absolute inset-0 h-full w-full object-cover" src="./images/Rectangle1.png"
                 alt="Checkout hero" />
             <div class="absolute inset-0 bg-white/60"></div>
-            <div class="relative z-10 text-center">
-                <h1 class="text-5xl font-bold text-[#333333]">Checkout</h1>
-                <p class="mt-2 text-sm text-[#666666]">Home &gt; Checkout</p>
+            <div class="relative z-10 text-center px-4">
+                <h1 class="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-[#333333]">Checkout</h1>
+                <p class="mt-2 text-xs sm:text-sm text-[#666666]">Home &gt; Checkout</p>
             </div>
         </section>
 
-        <section class="bg-white px-6 py-16">
+        <section class="bg-white px-4 sm:px-6 py-10 md:py-16">
             <div class="mx-auto max-w-[1236px]">
-                <div class="flex flex-col lg:flex-row gap-10">
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-10">
                     <div class="w-full lg:w-[58%]">
-                        <h2 class="text-2xl font-semibold text-[#333333] mb-8">Billing details</h2>
+                        <h2 class="text-xl sm:text-2xl font-semibold text-[#333333] mb-6 sm:mb-8">Billing details
+                        </h2>
                         <form>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                                 <div>
                                     <label class="block text-sm font-medium text-[#333333] mb-2">First Name</label>
                                     <input type="text"
@@ -154,11 +162,12 @@
                     </div>
 
                     <div class="w-full lg:w-[38%]">
-                        <h2 class="text-2xl font-semibold text-[#333333] mb-8">Billing details</h2>
+                        <h2 class="text-xl sm:text-2xl font-semibold text-[#333333] mb-6 sm:mb-8">Billing details
+                        </h2>
                         <div class="border-b border-[#E0E0E0] pb-6">
                             <div class="flex justify-between items-center mb-4">
-                                <span class="text-base font-semibold text-[#333333]">Product</span>
-                                <span class="text-base font-semibold text-[#333333]">Subtotal</span>
+                                <span class="text-sm sm:text-base font-semibold text-[#333333]">Product</span>
+                                <span class="text-sm sm:text-base font-semibold text-[#333333]">Subtotal</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-sm text-[#333333]">Asgaard sofa <span class="text-[#999999]">x
@@ -173,8 +182,8 @@
                                 <span class="text-sm text-[#666666]">Rs. 250,000.00</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-base text-[#333333]">Total</span>
-                                <span class="text-lg font-bold text-[#B88E2F]">Rs. 250,000.00</span>
+                                <span class="text-sm sm:text-base text-[#333333]">Total</span>
+                                <span class="text-base sm:text-lg font-bold text-[#B88E2F]">Rs. 250,000.00</span>
                             </div>
                         </div>
 
@@ -203,7 +212,7 @@
                                     class="text-[#B88E2F] underline font-medium">privacy policy</a>.
                             </p>
                             <button type="submit"
-                                class="mt-8 w-full py-3 px-6 border-2 border-[#B88E2F] rounded-lg text-base font-semibold text-[#B88E2F] bg-white hover:bg-[#F9F1E7] transition-colors cursor-pointer">
+                                class="mt-8 w-full py-2.5 sm:py-3 px-6 border-2 border-[#B88E2F] rounded-lg text-sm sm:text-base font-semibold text-[#B88E2F] bg-white hover:bg-[#F9F1E7] transition-colors cursor-pointer">
                                 Place order
                             </button>
                         </div>
@@ -212,7 +221,7 @@
             </div>
         </section>
 
-        <section class="bg-[#F9F1E7] px-6 py-16">
+        <section class="bg-[#F9F1E7] px-4 sm:px-6 py-10 md:py-16">
             <div class="mx-auto grid max-w-[1236px] grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 <div class="flex items-center gap-4">
                     <i class="ri-trophy-line text-3xl text-[#333333]"></i>
@@ -246,9 +255,9 @@
         </section>
     </main>
 
-    <footer class="bg-white px-6 py-16 border-t border-[#dddddd]">
+    <footer class="bg-white px-4 sm:px-6 py-10 md:py-16 border-t border-[#dddddd]">
         <div class="mx-auto max-w-[1236px]">
-            <div class="flex w-full justify-around flex-wrap gap-10">
+            <div class="flex w-full justify-around flex-wrap gap-8 sm:gap-10">
                 <div class="w-full sm:w-[calc(33.333%-2rem)] lg:w-[25%]">
                     <h2 class="text-2xl font-bold text-[#333333]">Furniro.</h2>
                     <p class="mt-6 text-sm leading-6 text-[#777777]">
@@ -285,19 +294,21 @@
                     <h3 class="mb-6 text-sm font-normal text-[#999999]">Newsletter</h3>
                     <form class="flex items-center gap-2">
                         <input type="email" placeholder="Enter Your Email Address"
-                            class="flex-1 border-b border-[#cccccc] bg-transparent pb-1 text-sm text-[#333333] outline-none placeholder:text-[#999999]" />
+                            class="flex-1 min-w-0 border-b border-[#cccccc] bg-transparent pb-1 text-sm text-[#333333] outline-none placeholder:text-[#999999]" />
                         <button type="submit"
-                            class="border-b border-[#333333] pb-1 text-sm font-bold uppercase text-[#333333] hover:text-[#B88E2F] hover:border-[#B88E2F]">
+                            class="shrink-0 border-b border-[#333333] pb-1 text-sm font-bold uppercase text-[#333333] hover:text-[#B88E2F] hover:border-[#B88E2F]">
                             SUBSCRIBE
                         </button>
                     </form>
                 </div>
             </div>
-            <hr class="my-12 border-t border-[#dddddd]" />
+            <hr class="my-10 sm:my-12 border-t border-[#dddddd]" />
             <p class="text-sm text-[#777777]">2023 Furniro. All rights reserved</p>
         </div>
     </footer>
     <script src="app.js"></script>
+        <script src="./app.js"></script>
+
 </body>
 
 </html>
