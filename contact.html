@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop-page</title>
+    <title>Contact - Furniro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
         integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -35,9 +35,141 @@
             <i class="ri-shopping-cart-2-line"></i>
         </div>
     </nav>
-    <main>
 
+    <main>
+        <section class="relative flex h-[50vh] items-center justify-center">
+            <img class="absolute inset-0 h-full w-full object-cover" src="./images/Rectangle1.png" alt="Contact hero" />
+            <div class="relative z-10 text-center">
+                <div class="mb-2 flex justify-center">
+                    <img class="h-8" src="./images/Logo.png" alt="Furniro" />
+                </div>
+                <h1 class="text-5xl font-bold text-[#333333]">Contact</h1>
+                <p class="mt-2 text-sm text-[#333333]">Home &gt; Contact</p>
+            </div>
+        </section>
+
+        <section class="bg-white px-6 py-20">
+            <div class="mx-auto max-w-[1236px]">
+                <div class="mb-16 text-center">
+                    <h2 class="text-3xl font-bold text-[#333333]">Get In Touch With Us</h2>
+                    <p class="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#777777]">
+                        For More Information About Our Product &amp; Services. Please Feel Free To Drop Us An Email. Our
+                        Staff Always Be There To Help You Out. Do Not Hesitate!
+                    </p>
+                </div>
+
+                <div class="flex flex-col gap-12 lg:flex-row lg:gap-24">
+                    <div class="lg:w-[35%] space-y-10">
+                        <div class="flex items-start gap-4">
+                            <i class="ri-map-pin-2-line text-2xl text-[#333333]"></i>
+                            <div>
+                                <h3 class="text-base font-bold text-[#333333]">Address</h3>
+                                <p class="mt-1 text-sm leading-6 text-[#777777]">
+                                    236 5th SF Avenue, New York NY10000, United States
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="ri-phone-line text-2xl text-[#333333]"></i>
+                            <div>
+                                <h3 class="text-base font-bold text-[#333333]">Phone</h3>
+                                <p class="mt-1 text-sm leading-6 text-[#777777]">
+                                    Mobile: +(84) 546-6789<br />
+                                    Hotline: +(84) 456-6789
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="ri-clock-line text-2xl text-[#333333]"></i>
+                            <div>
+                                <h3 class="text-base font-bold text-[#333333]">Working Time</h3>
+                                <p class="mt-1 text-sm leading-6 text-[#777777]">
+                                    Monday&ndash;Friday: 9:00 &ndash; 22:00<br />
+                                    Saturday&ndash;Sunday: 9:00 &ndash; 21:00
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:w-[65%]">
+                        <form class="space-y-8">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-[#333333]">Your name</label>
+                                <input type="text" id="name" name="name" placeholder="Abc"
+                                    class="mt-2 w-full rounded-[10px] border border-[#cccccc] px-6 py-4 text-sm text-[#333333] outline-none placeholder:text-[#999999] focus:border-[#B88E2F]" />
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-[#333333]">Email
+                                    address</label>
+                                <input type="email" id="email" name="email" placeholder="Abc@def.com"
+                                    class="mt-2 w-full rounded-[10px] border border-[#cccccc] px-6 py-4 text-sm text-[#333333] outline-none placeholder:text-[#999999] focus:border-[#B88E2F]" />
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-[#333333]">Subject</label>
+                                <input type="text" id="subject" name="subject" placeholder="This is an optional"
+                                    class="mt-2 w-full rounded-[10px] border border-[#cccccc] px-6 py-4 text-sm text-[#333333] outline-none placeholder:text-[#999999] focus:border-[#B88E2F]" />
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-[#333333]">Message</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Hi! I'd like to ask about"
+                                    class="mt-2 w-full resize-none rounded-[10px] border border-[#cccccc] px-6 py-4 text-sm text-[#333333] outline-none placeholder:text-[#999999] focus:border-[#B88E2F]"></textarea>
+                            </div>
+                            <div>
+                                <button type="submit"
+                                    class="rounded-[5px] bg-[#B88E2F] px-20 py-3 text-sm font-bold text-white transition-colors hover:bg-[#a07e2a]">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-[#F9F1E7] px-6 py-16">
+            <div class="mx-auto max-w-[1236px]">
+                <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                    <div class="flex items-center gap-3">
+                        <div class="text-4xl text-[#333333]">
+                            <i class="ri-trophy-line"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-[#333333]">High Quality</h3>
+                            <p class="text-sm text-[#777777]">crafted from top materials</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="text-4xl text-[#333333]">
+                            <i class="ri-shield-check-line"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-[#333333]">Warranty Protection</h3>
+                            <p class="text-sm text-[#777777]">Over 2 years</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="text-4xl text-[#333333]">
+                            <i class="ri-truck-line"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-[#333333]">Free Shipping</h3>
+                            <p class="text-sm text-[#777777]">Order over 150 $</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="text-4xl text-[#333333]">
+                            <i class="ri-customer-service-2-line"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-[#333333]">24 / 7 Support</h3>
+                            <p class="text-sm text-[#777777]">Dedicated support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
     <footer class="bg-white px-6 py-16">
         <div class="mx-auto max-w-[1236px]">
             <div class="flex  w-full justify-around flex-wrap gap-10 ">
