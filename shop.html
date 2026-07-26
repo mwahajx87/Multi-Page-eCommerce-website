@@ -12,6 +12,9 @@
         integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="./js/data.js"></script>
+    <script defer src="./js/shop.js"></script>
+    <script defer src="./js/app.js"></script>
 </head>
 
 <body>
@@ -37,8 +40,11 @@
         <div class="hidden lg:flex justify-center items-center gap-8 text-xl">
             <i class="ri-user-3-line"></i>
             <i class="ri-search-line"></i>
-            <i class="ri-heart-line"></i>
-            <i class="ri-shopping-cart-2-line"></i>
+            <a href="./wishlist.html"><i class="ri-heart-line"></i></a>
+            <div class="cart-icon-wrapper relative cursor-pointer">
+                <i class="ri-shopping-cart-2-line"></i>
+                <div id="cartDropdown" class="cart-dropdown hidden absolute top-full right-0 z-[100] pt-3"></div>
+            </div>
         </div>
        <div id="mobileMenu"
             class="hidden lg:hidden absolute top-full left-0 w-full bg-white shadow-md z-50 flex-col gap-6 p-6">
@@ -49,8 +55,8 @@
             <div class="flex items-center gap-8 text-xl pt-4 border-t border-[#eeeeee]">
                 <i class="ri-user-3-line"></i>
                 <i class="ri-search-line"></i>
-                <i class="ri-heart-line"></i>
-                <i class="ri-shopping-cart-2-line"></i>
+                <a href="./wishlist.html"><i class="ri-heart-line"></i></a>
+                <a href="./cart.html"><i class="ri-shopping-cart-2-line"></i></a>
             </div>
         </div>
     </nav>
@@ -73,16 +79,22 @@
                     <i class="ri-grid-fill text-lg text-[#333333]"></i>
                     <i class="ri-list-unordered text-lg text-[#999999]"></i>
                     <span class="text-[#cccccc]">|</span>
-                    <span class="text-sm text-[#333333]">Showing 1&ndash;16 of 32 results</span>
+                    <span id="showingCount" class="text-sm text-[#333333]">Showing 1&ndash;16 of 32 results</span>
                 </div>
                 <div class="flex items-center gap-4">
-                    <span class="text-sm text-[#333333]">Show</span>
-                    <select class="border bg-white px-3 py-1 text-sm text-[#333333]">
-                        <option>16</option>
+<span class="text-sm text-[#333333]">Show</span>
+                    <select id="showSelect" class="border bg-white px-3 py-1 text-sm text-[#333333]">
+                        <option value="8">8</option>
+                        <option value="16">16</option>
+                        <option value="32">32</option>
                     </select>
                     <span class="text-sm text-[#333333]">Short by</span>
-                    <select class="border bg-white px-3 py-1 text-sm text-[#333333]">
-                        <option>Default</option>
+                    <select id="sortSelect" class="border bg-white px-3 py-1 text-sm text-[#333333]">
+                        <option value="default">Default</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="name-asc">Name: A-Z</option>
+                        <option value="name-desc">Name: Z-A</option>
                     </select>
                 </div>
             </div>
@@ -90,477 +102,11 @@
 
         <section class="bg-white px-6 py-16">
             <div class="mx-auto max-w-[1236px]">
-                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                    <!-- Product 1: Syltherine -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image1.png" alt="Syltherine"
-                                loading="lazy" />
-                            <span
-                                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#E97171] text-sm font-medium text-white">-30%</span>
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Syltherine</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Stylish cafe chair</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 2.500.000</span>
-                                <span class="text-sm text-[#B0B0B0] line-through">Rp 3.500.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 2: Leviosa -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image2.png" alt="Leviosa"
-                                loading="lazy" />
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Leviosa</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Stylish cafe chair</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 2.500.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 3: Lolito -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image3.png" alt="Lolito"
-                                loading="lazy" />
-                            <span
-                                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#E97171] text-sm font-medium text-white">-50%</span>
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Lolito</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Luxury big sofa</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 7.000.000</span>
-                                <span class="text-sm text-[#B0B0B0] line-through">Rp 14.000.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 4: Respira -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image4.png" alt="Respira"
-                                loading="lazy" />
-                            <span
-                                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#2EC1AC] text-sm font-medium text-white">New</span>
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Respira</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Outdoor bar table and stool</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 500.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 5: Grifo -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image6.png" alt="Grifo"
-                                loading="lazy" />
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Grifo</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Night lamp</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 1.500.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 6: Muggo -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image7.png" alt="Muggo"
-                                loading="lazy" />
-                            <span
-                                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#2EC1AC] text-sm font-medium text-white">New</span>
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Muggo</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Small mug</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 150.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 7: Pingky -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image8.png" alt="Pingky"
-                                loading="lazy" />
-                            <span
-                                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#E97171] text-sm font-medium text-white">-50%</span>
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Pingky</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Cute bed set</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 7.000.000</span>
-                                <span class="text-sm text-[#B0B0B0] line-through">Rp 14.000.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 8: Potty -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image9.png" alt="Potty"
-                                loading="lazy" />
-                            <span
-                                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#2EC1AC] text-sm font-medium text-white">New</span>
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Potty</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Minimalist flower pot</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 500.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 1: Syltherine -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image1.png" alt="Syltherine"
-                                loading="lazy" />
-                            <span
-                                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#E97171] text-sm font-medium text-white">-30%</span>
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Syltherine</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Stylish cafe chair</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 2.500.000</span>
-                                <span class="text-sm text-[#B0B0B0] line-through">Rp 3.500.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 2: Leviosa -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image2.png" alt="Leviosa"
-                                loading="lazy" />
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Leviosa</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Stylish cafe chair</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 2.500.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 3: Lolito -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image3.png" alt="Lolito"
-                                loading="lazy" />
-                            <span
-                                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#E97171] text-sm font-medium text-white">-50%</span>
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Lolito</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Luxury big sofa</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 7.000.000</span>
-                                <span class="text-sm text-[#B0B0B0] line-through">Rp 14.000.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 4: Respira -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image4.png" alt="Respira"
-                                loading="lazy" />
-                            <span
-                                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#2EC1AC] text-sm font-medium text-white">New</span>
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Respira</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Outdoor bar table and stool</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 500.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 5: Grifo -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image6.png" alt="Grifo"
-                                loading="lazy" />
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Grifo</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Night lamp</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 1.500.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 6: Muggo -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image7.png" alt="Muggo"
-                                loading="lazy" />
-                            <span
-                                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#2EC1AC] text-sm font-medium text-white">New</span>
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Muggo</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Small mug</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 150.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 7: Pingky -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image8.png" alt="Pingky"
-                                loading="lazy" />
-                            <span
-                                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#E97171] text-sm font-medium text-white">-50%</span>
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Pingky</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Cute bed set</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 7.000.000</span>
-                                <span class="text-sm text-[#B0B0B0] line-through">Rp 14.000.000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product 8: Potty -->
-                    <div class="relative overflow-hidden bg-[#F4F5F7]">
-                        <div class="group relative">
-                            <img class="w-full object-cover" src="./images/shop/image9.png" alt="Potty"
-                                loading="lazy" />
-                            <span
-                                class="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#2EC1AC] text-sm font-medium text-white">New</span>
-                            <div
-                                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                <button class="mb-4 bg-white px-12 py-3 text-sm font-bold text-[#B88E4A]">Add to
-                                    cart</button>
-                                <div class="flex items-center gap-6 text-sm text-white">
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-share-line"></i> Share</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-arrow-left-right-line"></i> Compare</span>
-                                    <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A]"><i
-                                            class="ri-heart-line"></i> Like</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-[#3A3A3A]">Potty</h3>
-                            <p class="mt-1 text-sm text-[#898989]">Minimalist flower pot</p>
-                            <div class="mt-2 flex items-center gap-3">
-                                <span class="text-lg font-bold text-[#3A3A3A]">Rp 500.000</span>
-                            </div>
-                        </div>
-                    </div>
+                <div id="shopProducts" class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
                 </div>
 
                 <!-- Pagination -->
-                <div class="mt-12 flex justify-center gap-4">
-                    <button class="rounded bg-[#B88E2F] px-5 py-2 text-sm text-white">1</button>
-                    <button class="rounded bg-[#F9F1E7] px-5 py-2 text-sm text-[#333333]">2</button>
-                    <button class="rounded bg-[#F9F1E7] px-5 py-2 text-sm text-[#333333]">3</button>
-                    <button class="rounded bg-[#F9F1E7] px-7 py-2 text-sm text-[#333333]">Next</button>
+                <div id="shopPagination" class="mt-12 flex justify-center gap-4">
                 </div>
             </div>
         </section>

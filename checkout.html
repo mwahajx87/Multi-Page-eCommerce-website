@@ -15,8 +15,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
         integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="./js/data.js"></script>
+    <script defer src="./js/checkout.js"></script>
+    <script defer src="./js/app.js"></script>
 </head>
 
 <body>
@@ -42,8 +44,11 @@
         <div class="hidden lg:flex justify-center items-center gap-8 text-xl">
             <i class="ri-user-3-line"></i>
             <i class="ri-search-line"></i>
-            <i class="ri-heart-line"></i>
-            <i class="ri-shopping-cart-2-line"></i>
+            <a href="./wishlist.html"><i class="ri-heart-line"></i></a>
+            <div class="cart-icon-wrapper relative cursor-pointer">
+                <i class="ri-shopping-cart-2-line"></i>
+                <div id="cartDropdown" class="cart-dropdown hidden absolute top-full right-0 z-[100] pt-3"></div>
+            </div>
         </div>
 
         <!-- Mobile menu -->
@@ -56,8 +61,8 @@
             <div class="flex items-center gap-8 text-xl pt-4 border-t border-[#eeeeee]">
                 <i class="ri-user-3-line"></i>
                 <i class="ri-search-line"></i>
-                <i class="ri-heart-line"></i>
-                <i class="ri-shopping-cart-2-line"></i>
+                <a href="./wishlist.html"><i class="ri-heart-line"></i></a>
+                <a href="./cart.html"><i class="ri-shopping-cart-2-line"></i></a>
             </div>
         </div>
     </nav>
@@ -161,30 +166,17 @@
                         </form>
                     </div>
 
-                    <div class="w-full lg:w-[38%]">
-                        <h2 class="text-xl sm:text-2xl font-semibold text-[#333333] mb-6 sm:mb-8">Billing details
-                        </h2>
-                        <div class="border-b border-[#E0E0E0] pb-6">
+<div class="w-full lg:w-[38%]">
+                        <h2 class="text-xl sm:text-2xl font-semibold text-[#333333] mb-6 sm:mb-8">Your Order</h2>
+                        <div id="checkoutOrderItems" class="border-b border-[#E0E0E0] pb-6">
                             <div class="flex justify-between items-center mb-4">
                                 <span class="text-sm sm:text-base font-semibold text-[#333333]">Product</span>
                                 <span class="text-sm sm:text-base font-semibold text-[#333333]">Subtotal</span>
                             </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-sm text-[#333333]">Asgaard sofa <span class="text-[#999999]">x
-                                        1</span></span>
-                                <span class="text-sm text-[#666666]">Rs. 250,000.00</span>
-                            </div>
+                            <!-- Dynamic cart items will render here -->
                         </div>
 
-                        <div class="border-b border-[#E0E0E0] pb-6 mt-4">
-                            <div class="flex justify-between items-center mb-3">
-                                <span class="text-sm text-[#666666]">Subtotal</span>
-                                <span class="text-sm text-[#666666]">Rs. 250,000.00</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-sm sm:text-base text-[#333333]">Total</span>
-                                <span class="text-base sm:text-lg font-bold text-[#B88E2F]">Rs. 250,000.00</span>
-                            </div>
+                        <div id="checkoutTotals" class="border-b border-[#E0E0E0] pb-6 mt-4">
                         </div>
 
                         <div class="mt-6">
@@ -306,9 +298,6 @@
             <p class="text-sm text-[#777777]">2023 Furniro. All rights reserved</p>
         </div>
     </footer>
-    <script src="app.js"></script>
-        <script src="./app.js"></script>
-
 </body>
 
 </html>

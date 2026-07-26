@@ -11,7 +11,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
         integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="./js/data.js"></script>
+    <script defer src="./js/productComparison.js"></script>
+    <script defer src="./js/app.js"></script>
 </head>
 
 <body>
@@ -37,8 +40,11 @@
         <div class="hidden lg:flex justify-center items-center gap-8 text-xl">
             <i class="ri-user-3-line"></i>
             <i class="ri-search-line"></i>
-            <i class="ri-heart-line"></i>
-            <i class="ri-shopping-cart-2-line"></i>
+            <a href="./wishlist.html"><i class="ri-heart-line"></i></a>
+            <div class="cart-icon-wrapper relative cursor-pointer">
+                <i class="ri-shopping-cart-2-line"></i>
+                <div id="cartDropdown" class="cart-dropdown hidden absolute top-full right-0 z-[100] pt-3"></div>
+            </div>
         </div>
 
         <div id="mobileMenu"
@@ -50,14 +56,11 @@
             <div class="flex items-center gap-8 text-xl pt-4 border-t border-[#eeeeee]">
                 <i class="ri-user-3-line"></i>
                 <i class="ri-search-line"></i>
-                <i class="ri-heart-line"></i>
-                <i class="ri-shopping-cart-2-line"></i>
+                <a href="./wishlist.html"><i class="ri-heart-line"></i></a>
+                <a href="./cart.html"><i class="ri-shopping-cart-2-line"></i></a>
             </div>
         </div>
     </nav>
-
-
-    <main>
         <section class="relative flex h-[50vh] items-center justify-center">
             <img class="absolute inset-0 h-full w-full object-cover" src="./images/Rectangle1.png"
                 alt="Comparison hero" />
@@ -70,9 +73,9 @@
             </div>
         </section>
 
-        <section class="bg-white px-6 py-16">
+<section class="bg-white px-6 py-16">
             <div class="mx-auto max-w-[1236px]">
-                <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
+                <div id="compareProductsGrid" class="grid grid-cols-1 gap-8 md:grid-cols-4">
                     <!-- Column 1: Go to Product page -->
                     <div class="flex flex-col items-center justify-center text-center">
                         <p class="text-lg font-bold text-[#333333] ">
@@ -83,56 +86,17 @@
                             View More
                         </a>
                     </div>
-
-                    <div class="flex flex-col items-center">
-                        <div class="w-full overflow-hidden rounded-lg bg-[#F9F1E7]">
-                            <img class="h-full w-full object-cover" src="./images/product/asgaardSofa.png"
-                                alt="Asgaard Sofa" />
-                        </div>
-                        <h3 class="mt-4 text-xl font-bold text-[#333333] ">Asgaard
-                            Sofa</h3>
-                        <p class="mt-2 text-lg font-bold text-[#B88E2F]">Rs. 250,000.00</p>
-                        <div class="mt-2 flex items-center gap-2">
-                            <div class="flex items-center gap-1 text-[#FFC700]">
-                                <i class="ri-star-fill text-sm"></i>
-                                <i class="ri-star-fill text-sm"></i>
-                                <i class="ri-star-fill text-sm"></i>
-                                <i class="ri-star-fill text-sm"></i>
-                                <i class="ri-star-fill text-sm"></i>
-                            </div>
-                            <span class="text-xs text-[#999999]">|</span>
-                            <span class="text-xs text-[#999999]">204 Reviews</span>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col items-center">
-                        <div class="w-full overflow-hidden rounded-lg bg-[#F9F1E7]">
-                            <img class="h-full w-full object-cover" src="./images/product/outdoorSofa.png"
-                                alt="Outdoor Sofa Set" />
-                        </div>
-                        <h3 class="mt-4 text-xl font-bold text-[#333333] ">Outdoor
-                            Sofa Set</h3>
-                        <p class="mt-2 text-lg font-bold text-[#B88E2F]">Rs. 224,000.00</p>
-                        <div class="mt-2 flex items-center gap-2">
-                            <div class="flex items-center gap-1 text-[#FFC700]">
-                                <i class="ri-star-fill text-sm"></i>
-                                <i class="ri-star-fill text-sm"></i>
-                                <i class="ri-star-fill text-sm"></i>
-                                <i class="ri-star-fill text-sm"></i>
-                                <i class="ri-star-half-fill text-sm"></i>
-                            </div>
-                            <span class="text-xs text-[#999999]">|</span>
-                            <span class="text-xs text-[#999999]">145 Reviews</span>
-                        </div>
-                    </div>
-
+                    <!-- Dynamic product columns will be rendered here -->
+                    <!-- Add A Product column -->
                     <div class="flex flex-col items-center justify-center text-center">
                         <p class="text-lg font-bold text-[#333333] ">Add A Product</p>
-                        <button
-                            class="mt-4 flex items-center gap-2 rounded-lg bg-[#B88E2F] px-6 py-3 text-sm font-semibold text-white">
-                            Choose a Product
-                            <i class="ri-arrow-down-s-line text-lg"></i>
-                        </button>
+                        <div class="relative mt-4">
+                            <select id="addProductSelect"
+                                class="rounded-lg bg-[#B88E2F] px-6 py-3 text-sm font-semibold text-white appearance-none cursor-pointer">
+                                <option value="">Choose a Product</option>
+                            </select>
+                            <i class="ri-arrow-down-s-line absolute right-3 top-1/2 -translate-y-1/2 text-white text-lg pointer-events-none"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -140,236 +104,7 @@
 
         <section class="bg-white px-6 py-8">
             <div class="mx-auto max-w-[1236px] overflow-x-auto">
-                <table class="w-full min-w-[700px] border-collapse text-left">
-                    <thead>
-                        <tr>
-                            <th class="w-1/4 py-4 pr-6 text-lg font-bold text-[#333333] ">
-                                General</th>
-                            <th
-                                class="w-1/4 py-4 px-6 text-lg font-bold text-[#333333] ">
-                                Asgaard Sofa</th>
-                            <th
-                                class="w-1/4 py-4 px-6 text-lg font-bold text-[#333333] ">
-                                Outdoor Sofa Set</th>
-                            <th class="w-1/4 py-4 pl-6"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Sales Package</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">1 Sectional
-                                Sofa</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">1 Three
-                                Seater, 2 Single Seater</td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Model Number</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">TFCBUGR656H5
-                            </td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">DTUBUGR6368
-                            </td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Secondary Material</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">Solid Wood
-                            </td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">Solid Wood
-                            </td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Configuration</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">L-shaped
-                            </td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">L-shaped
-                            </td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Upholstery Material</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">Fabric +
-                                Cotton</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">Fabric +
-                                Cotton</td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Upholstery Color</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">Bright Grey
-                                and Lion</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">Bright Grey
-                                and Lion</td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                    </tbody>
-
-                    <thead>
-                        <tr>
-                            <th class="py-6 pr-6 text-lg font-bold text-[#333333] ">
-                                Product</th>
-                            <th class="py-6 px-6 "></th>
-                            <th class="py-6 px-6 "></th>
-                            <th class="py-6 pl-6 "></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Filling Material</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">Foam</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">Matte</td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Finish Type</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">Bright Grey
-                                and Lion</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">Bright Grey
-                                and Lion</td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Adjustable Headrest</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">No</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">Yes</td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Maximum Load Capacity</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">280 KG</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">300 KG</td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Origin of Manufacture</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">India</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">India</td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                    </tbody>
-
-                    <thead>
-                        <tr>
-                            <th class="py-6 pr-6 text-lg font-bold text-[#333333]">
-                                Dimensions</th>
-                            <th class="py-6 px-6 "></th>
-                            <th class="py-6 px-6 "></th>
-                            <th class="py-6 pl-6 "></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Width</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">265.32 cm
-                            </td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">265.32 cm
-                            </td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Height</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">76 cm</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">80 cm</td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Depth</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">167.64 cm
-                            </td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">170 cm</td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Weight</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">45 KG</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">65 KG</td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Seat Height</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">41.52 cm
-                            </td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">45 cm</td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Leg Height</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">5.46 cm</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">5 cm</td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                    </tbody>
-
-                    <thead>
-                        <tr>
-                            <th class="py-6 pr-6 text-lg font-bold text-[#333333]">
-                                Warranty</th>
-                            <th class="py-6 px-6 "></th>
-                            <th class="py-6 px-6 "></th>
-                            <th class="py-6 pl-6 "></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Warranty Summary</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">1 Year
-                                Manufacturing Warranty</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">1.2 Year
-                                Manufacturing Warranty</td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Warranty Service Type</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">
-                                <a href="mailto:operations@treivfurniture.com"
-                                    class="text-[#B88E2F] underline">operations@treivfurniture.com</a>
-                            </td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">
-                                <a href="mailto:operations@treivfurniture.com"
-                                    class="text-[#B88E2F] underline">operations@treivfurniture.com</a>
-                            </td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Covered in Warranty</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">
-                                Manufacturing Defects</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">
-                                Manufacturing Defects</td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Not Covered in Warranty</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">Damage due
-                                to misuse or natural wear and tear
-                            </td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">Damage due
-                                to misuse or natural wear and tear
-                            </td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]">Domestic Warranty</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">1 Year</td>
-                            <td class="py-4 px-6 text-sm text-[#333333] ">1.2 Year
-                            </td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-6 text-sm text-[#777777]"></td>
-                            <td class="py-4 px-6 text-sm text-[#333333] "><button
-                                    class="rounded-lg bg-[#B88E2F] px-10 py-3 text-sm font-bold text-white transition-colors hover:bg-[#a07a28]">
-                                    Add To Cart
-                                </button></td>
-                            <td class="py-4 px-6 text-sm text-[#333333] "><button
-                                    class="rounded-lg bg-[#B88E2F] px-10 py-3 text-sm font-bold text-white transition-colors hover:bg-[#a07a28]">
-                                    Add To Cart
-                                </button></td>
-                            <td class="py-4 pl-6"></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div id="compareTableContainer"></div>
             </div>
         </section>
 
@@ -474,8 +209,6 @@
             <p class="text-sm text-[#777777]">2023 Furniro. All rights reserved</p>
         </div>
     </footer>
-    <script src="./app.js"></script>
-
 </body>
 
 </html>
