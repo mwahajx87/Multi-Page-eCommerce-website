@@ -1,4 +1,3 @@
-// ===== MOBILE MENU TOGGLE =====
 const menuToggle = document.getElementById("menuToggle");
 const mobileMenu = document.getElementById("mobileMenu");
 if (menuToggle && mobileMenu) {
@@ -16,7 +15,6 @@ if (menuToggle && mobileMenu) {
   });
 }
 
-// ===== HOMEPAGE: Render Products =====
 function renderHomepageProducts() {
   const container = document.getElementById("homeProducts");
   if (!container) return;
@@ -28,8 +26,6 @@ function renderHomepageProducts() {
   });
 }
 
-// ===== INIT ON DOM READY =====
 document.addEventListener("DOMContentLoaded", function () {
-  // data.js already calls initDataStore() and updateCartBadge() on DOMContentLoaded
   renderHomepageProducts();
 });

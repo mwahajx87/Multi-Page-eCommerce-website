@@ -1,36 +1,14 @@
-// ===== CART DYNAMIC RENDERER =====
-
 document.addEventListener("DOMContentLoaded", function () {
   initDataStore();
   updateCartBadge();
   renderCartPage();
-
-  // Mobile menu toggle
-  const menuToggle = document.getElementById("menuToggle");
-  const mobileMenu = document.getElementById("mobileMenu");
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener("click", () => {
-      const isHidden = mobileMenu.classList.contains("hidden");
-      if (isHidden) {
-        mobileMenu.classList.remove("hidden");
-        mobileMenu.classList.add("flex");
-        menuToggle.innerHTML = '<i class="ri-close-line"></i>';
-      } else {
-        mobileMenu.classList.add("hidden");
-        mobileMenu.classList.remove("flex");
-        menuToggle.innerHTML = '<i class="ri-menu-line"></i>';
-      }
-    });
-  }
 });
 
-// ===== RENDER CART PAGE =====
 function renderCartPage() {
   renderCartItems();
   renderCartTotals();
 }
 
-// ===== RENDER CART ITEMS =====
 function renderCartItems() {
   const container = document.getElementById("cartItemsContainer");
   if (!container) return;
@@ -88,7 +66,6 @@ function renderCartItems() {
 
   container.innerHTML = html;
 
-  // Attach quantity change events
   container.querySelectorAll(".cart-qty-input").forEach((input) => {
     input.addEventListener("change", function () {
       const id = parseInt(this.dataset.id);
@@ -102,7 +79,6 @@ function renderCartItems() {
     });
   });
 
-  // Attach remove events
   container.querySelectorAll(".cart-remove-btn").forEach((btn) => {
     btn.addEventListener("click", function () {
       const id = parseInt(this.dataset.id);
@@ -113,7 +89,6 @@ function renderCartItems() {
   });
 }
 
-// ===== RENDER CART TOTALS =====
 function renderCartTotals() {
   const container = document.getElementById("cartTotalsContent");
   if (!container) return;
@@ -156,4 +131,3 @@ function renderCartTotals() {
     </div>
   `;
 }
-

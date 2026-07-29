@@ -1,31 +1,10 @@
-// ===== CHECKOUT DYNAMIC RENDERER =====
-
 document.addEventListener("DOMContentLoaded", function () {
   initDataStore();
   updateCartBadge();
   renderCheckoutOrderSummary();
   setupCheckoutForm();
-
-  // Mobile menu toggle
-  const menuToggle = document.getElementById("menuToggle");
-  const mobileMenu = document.getElementById("mobileMenu");
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener("click", () => {
-      const isHidden = mobileMenu.classList.contains("hidden");
-      if (isHidden) {
-        mobileMenu.classList.remove("hidden");
-        mobileMenu.classList.add("flex");
-        menuToggle.innerHTML = '<i class="ri-close-line"></i>';
-      } else {
-        mobileMenu.classList.add("hidden");
-        mobileMenu.classList.remove("flex");
-        menuToggle.innerHTML = '<i class="ri-menu-line"></i>';
-      }
-    });
-  }
 });
 
-// ===== RENDER ORDER SUMMARY =====
 function renderCheckoutOrderSummary() {
   const itemsContainer = document.getElementById("checkoutOrderItems");
   const totalsContainer = document.getElementById("checkoutTotals");
@@ -55,7 +34,6 @@ function renderCheckoutOrderSummary() {
     return;
   }
 
-  // Keep the header row
   let itemsHtml = `
     <div class="flex justify-between items-center mb-4">
       <span class="text-sm sm:text-base font-semibold text-[#333333]">Product</span>
@@ -93,7 +71,6 @@ function renderCheckoutOrderSummary() {
   `;
 }
 
-// ===== SETUP CHECKOUT FORM =====
 function setupCheckoutForm() {
   const placeOrderBtn = document.querySelector(".place-order-btn");
   // The button doesn't have a specific class - use the submit button
@@ -108,7 +85,6 @@ function setupCheckoutForm() {
   }
 }
 
-// ===== PLACE ORDER =====
 function placeOrder() {
   const cart = getCart();
   if (cart.length === 0) {
@@ -116,11 +92,9 @@ function placeOrder() {
     return;
   }
 
-  // Gather form data
   const formData = {
     firstName: document.querySelector('input[type="text"]')?.value || "",
-    lastName:
-      document.querySelectorAll('input[type="text"]')[1]?.value || "",
+    lastName: document.querySelectorAll('input[type="text"]')[1]?.value || "",
     companyName:
       document.querySelectorAll('input[type="text"]')[2]?.value || "",
     country: document.querySelector("select")?.value || "",
@@ -131,10 +105,10 @@ function placeOrder() {
     phone: document.querySelectorAll('input[type="text"]')[6]?.value || "",
     email: document.querySelector('input[type="email"]')?.value || "",
     additionalInfo: document.querySelector("textarea")?.value || "",
-    payment: document.querySelector('input[name="payment"]:checked')?.value || "bank",
+    payment:
+      document.querySelector('input[name="payment"]:checked')?.value || "bank",
   };
 
-  // Create order
   const orders = getOrders();
   const order = {
     id: Date.now(),
@@ -153,9 +127,7 @@ function placeOrder() {
   showToast(`Order placed! ID: ${order.orderId}`);
   renderCheckoutOrderSummary();
 
-  // Reset form
   document.querySelectorAll("input, textarea, select").forEach((el) => {
     if (el.type !== "radio") el.value = "";
   });
 }
-

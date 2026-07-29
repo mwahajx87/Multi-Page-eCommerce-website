@@ -1,6 +1,3 @@
-// ===== FURNIRO DATA STORE =====
-// All product, blog, and category data initialized in localStorage
-
 const FURNITURE_DATA = {
   products: [
     {
@@ -493,9 +490,7 @@ const FURNITURE_DATA = {
   ],
 };
 
-// ===== LOCALSTORAGE INITIALIZATION =====
 function initDataStore() {
-  // Always refresh products data to ensure latest specs are available
   localStorage.setItem(
     "furniro_products",
     JSON.stringify(FURNITURE_DATA.products),
@@ -518,7 +513,6 @@ function initDataStore() {
       JSON.stringify(FURNITURE_DATA.recentPosts),
     );
   }
-  // Initialize cart, compare, wishlist as empty arrays if not exist
   if (!localStorage.getItem("furniro_cart")) {
     localStorage.setItem("furniro_cart", JSON.stringify([]));
   }
@@ -533,7 +527,6 @@ function initDataStore() {
   }
 }
 
-// ===== UTILITY FUNCTIONS =====
 function getProducts() {
   return JSON.parse(localStorage.getItem("furniro_products")) || [];
 }
@@ -587,7 +580,6 @@ function saveOrders(orders) {
   localStorage.setItem("furniro_orders", JSON.stringify(orders));
 }
 
-// ===== CART OPERATIONS =====
 function addToCart(productId, quantity = 1) {
   const cart = getCart();
   const existing = cart.find((item) => item.productId === productId);
@@ -646,14 +638,11 @@ function getCartTotal() {
   return total;
 }
 
-// ===== COMPARE OPERATIONS =====
 function addToCompare(productId) {
   const compare = getCompare();
-  // If already has 2 products, remove the oldest (first) one to make room
   if (compare.length >= 2) {
     compare.shift();
   }
-  // Add the new product if not already in the list
   if (!compare.includes(productId)) {
     compare.push(productId);
     saveCompare(compare);
@@ -673,7 +662,6 @@ function isInCompare(productId) {
   return compare.includes(productId);
 }
 
-// ===== WISHLIST OPERATIONS =====
 function toggleWishlist(productId) {
   let wishlist = getWishlist();
   const index = wishlist.indexOf(productId);
@@ -691,7 +679,6 @@ function isInWishlist(productId) {
   return wishlist.includes(productId);
 }
 
-// ===== CART BADGE =====
 function updateCartBadge() {
   const count = getCartCount();
   const cartIcons = document.querySelectorAll(".ri-shopping-cart-2-line");
@@ -713,7 +700,6 @@ function updateCartBadge() {
   });
 }
 
-// ===== CART DROPDOWN =====
 function renderCartDropdown() {
   const dropdown = document.getElementById("cartDropdown");
   if (!dropdown) return;
@@ -738,11 +724,11 @@ function renderCartDropdown() {
 
       itemsHtml += `
         <div class="cart-dropdown-item flex items-center gap-3 px-4 py-3 border-b border-[#eeeeee]">
-          <div class="h-14 w-14 flex-shrink-0 overflow-hidden rounded-lg bg-[#F9F1E7]">
+          <a href="./product.html?id=${product.id}" class="h-14 w-14 flex-shrink-0 overflow-hidden rounded-lg bg-[#F9F1E7]">
             <img class="h-full w-full object-cover" src="${product.image}" alt="${product.name}" />
-          </div>
+          </a>
           <div class="flex-1 min-w-0">
-            <p class="text-sm font-semibold text-[#333333] truncate">${product.name}</p>
+            <a href="./product.html?id=${product.id}" class="text-sm font-semibold text-[#333333] truncate block hover:text-[#B88E2F]">${product.name}</a>
             <p class="text-xs text-[#898989] mt-1">
               <span class="text-sm">${item.quantity}</span> x <span class="text-sm text-[#B88E2F] font-medium">${formatPrice(product.price)}</span>
             </p>
@@ -758,7 +744,7 @@ function renderCartDropdown() {
   dropdown.innerHTML = `
     <div class="w-[320px] bg-white shadow-lg border border-[#e0e0e0] rounded-lg">
       <div class="px-4 py-4 border-b border-[#eeeeee]">
-        <h3 class="text-lg font-bold text-[#333333]">Shopping Cart</h3>
+        <a href="./cart.html" class="text-lg font-bold text-[#333333] hover:text-[#B88E2F]">Shopping Cart</a>
       </div>
       <div class="cart-dropdown-items max-h-[300px] overflow-y-auto">
         ${itemsHtml}
@@ -783,7 +769,6 @@ function renderCartDropdown() {
     </div>
   `;
 
-  // Attach remove events
   dropdown.querySelectorAll(".cart-dropdown-remove").forEach((btn) => {
     btn.addEventListener("click", function (e) {
       e.stopPropagation();
@@ -800,35 +785,63 @@ function initCartDropdown() {
   const dropdown = document.getElementById("cartDropdown");
   if (!cartIcon || !dropdown) return;
 
+  let overlay = document.getElementById("cartDropdownOverlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.id = "cartDropdownOverlay";
+    overlay.className = "fixed inset-0 bg-black/50 z-[99] hidden";
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener("click", function () {
+      document
+        .querySelectorAll(".cart-dropdown")
+        .forEach((d) => d.classList.add("hidden"));
+      overlay.classList.add("hidden");
+    });
+  }
+
+  function showDropdown() {
+    renderCartDropdown();
+    dropdown.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+  }
+
+  function hideDropdown() {
+    dropdown.classList.add("hidden");
+    overlay.classList.add("hidden");
+  }
+
   cartIcon.addEventListener("click", function (e) {
+    if (dropdown.contains(e.target)) {
+      return;
+    }
     e.preventDefault();
     e.stopPropagation();
     const isHidden = dropdown.classList.contains("hidden");
-    // Close all other dropdowns first
-    document.querySelectorAll(".cart-dropdown").forEach((d) => d.classList.add("hidden"));
+    document
+      .querySelectorAll(".cart-dropdown")
+      .forEach((d) => d.classList.add("hidden"));
+    overlay.classList.add("hidden");
     if (isHidden) {
-      renderCartDropdown();
-      dropdown.classList.remove("hidden");
+      showDropdown();
     } else {
-      dropdown.classList.add("hidden");
+      hideDropdown();
     }
   });
 
-  // Close dropdown when clicking outside
-  document.addEventListener("click", function (e) {
-    if (!cartIcon.contains(e.target) && !dropdown.contains(e.target)) {
-      dropdown.classList.add("hidden");
+  dropdown.addEventListener("click", function (e) {
+    const link = e.target.closest("a");
+    if (link) {
+      hideDropdown();
     }
   });
 }
 
-// ===== FORMAT PRICE =====
 function formatPrice(price) {
   if (!price) return "Rp 0";
   return "Rp " + price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-// ===== PRODUCT CARD RENDERER =====
 function createProductCard(product) {
   const discount = product.originalPrice
     ? Math.round(
@@ -862,7 +875,7 @@ function createProductCard(product) {
             <i class="ri-arrow-left-right-line"></i> Compare
           </span>
           <span class="flex cursor-pointer items-center gap-1 hover:text-[#B88E4A] toggle-wishlist" data-id="${product.id}">
-            <i class="${isInWishlist(product.id) ? 'ri-heart-fill text-red-500' : 'ri-heart-line'}"></i> Like
+            <i class="${isInWishlist(product.id) ? "ri-heart-fill text-red-500" : "ri-heart-line"}"></i> Like
           </span>
         </div>
       </div>
@@ -877,9 +890,7 @@ function createProductCard(product) {
     </div>
   `;
 
-  // Navigate to product detail page on card click
   div.addEventListener("click", (e) => {
-    // Only navigate if the click is directly on the card or the info section, not on buttons/icons
     if (
       e.target.closest(".add-to-cart-btn") ||
       e.target.closest(".add-to-compare") ||
@@ -890,7 +901,6 @@ function createProductCard(product) {
     window.location.href = `./product.html?id=${product.id}`;
   });
 
-  // Attach event listeners
   setTimeout(() => {
     const addBtn = div.querySelector(".add-to-cart-btn");
     if (addBtn) {
@@ -902,7 +912,7 @@ function createProductCard(product) {
       });
     }
 
-const compareBtns = div.querySelectorAll(".add-to-compare");
+    const compareBtns = div.querySelectorAll(".add-to-compare");
     compareBtns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -926,7 +936,6 @@ const compareBtns = div.querySelectorAll(".add-to-compare");
         e.stopPropagation();
         const id = parseInt(btn.dataset.id);
         const wishlist = toggleWishlist(id);
-        // Toggle heart icon visually
         const icon = btn.querySelector("i");
         if (icon) {
           if (wishlist.includes(id)) {
@@ -936,7 +945,11 @@ const compareBtns = div.querySelectorAll(".add-to-compare");
           }
         }
         const isLiked = wishlist.includes(id);
-        showToast(isLiked ? `${product.name} added to wishlist!` : `${product.name} removed from wishlist!`);
+        showToast(
+          isLiked
+            ? `${product.name} added to wishlist!`
+            : `${product.name} removed from wishlist!`,
+        );
       });
     });
   }, 0);
@@ -944,9 +957,7 @@ const compareBtns = div.querySelectorAll(".add-to-compare");
   return div;
 }
 
-// ===== TOAST NOTIFICATION =====
 function showToast(message) {
-  // Remove existing toast if any
   const existing = document.querySelector(".furniro-toast");
   if (existing) existing.remove();
 
@@ -963,7 +974,6 @@ function showToast(message) {
   }, 2500);
 }
 
-// Add animation style
 const style = document.createElement("style");
 style.textContent = `
   @keyframes fadeInUp {
@@ -976,7 +986,6 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Initialize on page load
 document.addEventListener("DOMContentLoaded", function () {
   initDataStore();
   updateCartBadge();

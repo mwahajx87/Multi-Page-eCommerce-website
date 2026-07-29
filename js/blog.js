@@ -1,32 +1,11 @@
-// ===== BLOG PAGE DYNAMIC RENDERER =====
-
 document.addEventListener("DOMContentLoaded", function () {
   initDataStore();
   updateCartBadge();
   renderBlog();
   renderCategories();
   renderRecentPosts();
-
-  // Mobile menu toggle (from app.js)
-  const menuToggle = document.getElementById("menuToggle");
-  const mobileMenu = document.getElementById("mobileMenu");
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener("click", () => {
-      const isHidden = mobileMenu.classList.contains("hidden");
-      if (isHidden) {
-        mobileMenu.classList.remove("hidden");
-        mobileMenu.classList.add("flex");
-        menuToggle.innerHTML = '<i class="ri-close-line"></i>';
-      } else {
-        mobileMenu.classList.add("hidden");
-        mobileMenu.classList.remove("flex");
-        menuToggle.innerHTML = '<i class="ri-menu-line"></i>';
-      }
-    });
-  }
 });
 
-// ===== RENDER BLOG POSTS =====
 let blogCurrentPage = 1;
 const BLOG_PER_PAGE = 2;
 
@@ -58,7 +37,6 @@ function renderBlog() {
     `;
   });
 
-  // Pagination
   let paginationHtml = "";
   for (let i = 1; i <= totalPages; i++) {
     paginationHtml += `<button class="rounded ${i === blogCurrentPage ? "bg-[#B88E2F] text-white" : "bg-[#F9F1E7] text-[#333333]"} px-4 sm:px-5 py-2 text-sm blog-page-btn" data-page="${i}">${i}</button>`;
@@ -70,7 +48,6 @@ function renderBlog() {
   html += `<div class="flex flex-wrap justify-center gap-3 sm:gap-4">${paginationHtml}</div>`;
   container.innerHTML = html;
 
-  // Attach pagination events
   document.querySelectorAll(".blog-page-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const page = parseInt(btn.dataset.page);
@@ -83,7 +60,6 @@ function renderBlog() {
   });
 }
 
-// ===== RENDER CATEGORIES =====
 function renderCategories() {
   const container = document.getElementById("blogCategories");
   if (!container) return;
@@ -101,7 +77,6 @@ function renderCategories() {
   container.innerHTML = html;
 }
 
-// ===== RENDER RECENT POSTS =====
 function renderRecentPosts() {
   const container = document.getElementById("blogRecentPosts");
   if (!container) return;

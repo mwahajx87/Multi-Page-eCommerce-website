@@ -1,29 +1,8 @@
-// ===== PRODUCT COMPARISON DYNAMIC RENDERER =====
-
 document.addEventListener("DOMContentLoaded", function () {
   initDataStore();
   updateCartBadge();
   renderComparePage();
 
-  // Mobile menu toggle
-  const menuToggle = document.getElementById("menuToggle");
-  const mobileMenu = document.getElementById("mobileMenu");
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener("click", () => {
-      const isHidden = mobileMenu.classList.contains("hidden");
-      if (isHidden) {
-        mobileMenu.classList.remove("hidden");
-        mobileMenu.classList.add("flex");
-        menuToggle.innerHTML = '<i class="ri-close-line"></i>';
-      } else {
-        mobileMenu.classList.add("hidden");
-        mobileMenu.classList.remove("flex");
-        menuToggle.innerHTML = '<i class="ri-menu-line"></i>';
-      }
-    });
-  }
-
-  // Add product select change event
   const addSelect = document.getElementById("addProductSelect");
   if (addSelect) {
     addSelect.addEventListener("change", function () {
@@ -42,14 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// ===== RENDER COMPARE PAGE =====
 function renderComparePage() {
   renderCompareProducts();
   renderCompareTable();
   populateAddProductSelect();
 }
 
-// ===== RENDER PRODUCT CARDS =====
 function renderCompareProducts() {
   const grid = document.getElementById("compareProductsGrid");
   if (!grid) return;
@@ -60,24 +37,17 @@ function renderCompareProducts() {
     .map((id) => products.find((p) => p.id === id))
     .filter(Boolean);
 
-  // Keep the first column (Go to Product) and last column (Add A Product)
   const firstCol = grid.children[0];
   const lastCol = grid.children[grid.children.length - 1];
 
-  // Clear middle columns
   while (grid.children.length > 1) {
     grid.removeChild(grid.children[1]);
   }
 
-  // Remove last if it's still there (we'll re-add it)
-  // Actually, keep the structure: [firstCol, ...productCols, lastCol]
-  // Let's just clear everything and rebuild
   grid.innerHTML = "";
 
-  // Rebuild: first col
   grid.appendChild(firstCol.cloneNode(true));
 
-  // Product columns
   compareProducts.forEach((product, index) => {
     const stars = getStarRating(product.rating);
     const col = document.createElement("div");
@@ -101,7 +71,6 @@ function renderCompareProducts() {
     `;
     grid.appendChild(col);
 
-    // Attach remove event
     const removeBtn = col.querySelector(".remove-compare-btn");
     if (removeBtn) {
       removeBtn.addEventListener("click", () => {
@@ -113,10 +82,8 @@ function renderCompareProducts() {
     }
   });
 
-  // Last col (Add A Product)
   grid.appendChild(lastCol.cloneNode(true));
 
-  // Re-attach the add product select event (since clone doesn't copy events)
   const newAddSelect = grid.querySelector("#addProductSelect");
   if (newAddSelect) {
     newAddSelect.addEventListener("change", function () {
@@ -136,7 +103,6 @@ function renderCompareProducts() {
   }
 }
 
-// ===== RENDER COMPARISON TABLE =====
 function renderCompareTable() {
   const container = document.getElementById("compareTableContainer");
   if (!container) return;
@@ -153,7 +119,6 @@ function renderCompareTable() {
     return;
   }
 
-  // Define all spec fields to show in the table
   const specGroups = [
     {
       title: "General",
@@ -213,7 +178,7 @@ function renderCompareTable() {
           ${compareProducts
             .map(
               () =>
-                `<th class="w-${Math.floor(75 / compareProducts.length)}% py-4 px-6"></th>`
+                `<th class="w-${Math.floor(75 / compareProducts.length)}% py-4 px-6"></th>`,
             )
             .join("")}
         </tr>
@@ -237,14 +202,13 @@ function renderCompareTable() {
       </tr>`;
     });
 
-    // Add "Add To Cart" buttons for last group
     if (group.title === "Warranty") {
       tableHtml += `<tr>
         <td class="py-4 pr-6 text-sm text-[#777777]"></td>
         ${compareProducts
           .map(
             (p) =>
-              `<td class="py-4 px-6 text-sm text-[#333333]"><button class="compare-add-cart rounded-lg bg-[#B88E2F] px-10 py-3 text-sm font-bold text-white transition-colors hover:bg-[#a07a28]" data-id="${p.id}">Add To Cart</button></td>`
+              `<td class="py-4 px-6 text-sm text-[#333333]"><button class="compare-add-cart rounded-lg bg-[#B88E2F] px-10 py-3 text-sm font-bold text-white transition-colors hover:bg-[#a07a28]" data-id="${p.id}">Add To Cart</button></td>`,
           )
           .join("")}
       </tr>`;
@@ -256,7 +220,6 @@ function renderCompareTable() {
   tableHtml += `</table>`;
   container.innerHTML = tableHtml;
 
-  // Attach add-to-cart events
   container.querySelectorAll(".compare-add-cart").forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = parseInt(btn.dataset.id);
@@ -266,7 +229,6 @@ function renderCompareTable() {
   });
 }
 
-// ===== POPULATE ADD PRODUCT SELECT =====
 function populateAddProductSelect() {
   const select = document.getElementById("addProductSelect");
   if (select) populateAddProductSelectForElement(select);
@@ -275,7 +237,6 @@ function populateAddProductSelect() {
 function populateAddProductSelectForElement(select) {
   const products = getProducts();
   const compareIds = getCompare();
-  // Keep only the first option (Choose a Product)
   select.innerHTML = '<option value="">Choose a Product</option>';
   products.forEach((p) => {
     if (!compareIds.includes(p.id)) {
@@ -287,7 +248,6 @@ function populateAddProductSelectForElement(select) {
   });
 }
 
-// ===== STAR RATING HELPER =====
 function getStarRating(rating) {
   const full = Math.floor(rating);
   const half = rating - full >= 0.5 ? 1 : 0;
@@ -295,7 +255,7 @@ function getStarRating(rating) {
   let html = "";
   for (let i = 0; i < full; i++) html += '<i class="ri-star-fill text-sm"></i>';
   if (half) html += '<i class="ri-star-half-fill text-sm"></i>';
-  for (let i = 0; i < empty; i++) html += '<i class="ri-star-line text-sm"></i>';
+  for (let i = 0; i < empty; i++)
+    html += '<i class="ri-star-line text-sm"></i>';
   return html;
 }
-

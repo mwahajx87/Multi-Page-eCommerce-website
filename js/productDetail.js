@@ -1,31 +1,10 @@
-// ===== PRODUCT DETAIL PAGE: Dynamic Rendering =====
-
 document.addEventListener("DOMContentLoaded", function () {
   initDataStore();
   updateCartBadge();
   renderProductDetail();
-
-  // Mobile menu toggle
-  const menuToggle = document.getElementById("menuToggle");
-  const mobileMenu = document.getElementById("mobileMenu");
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener("click", () => {
-      const isHidden = mobileMenu.classList.contains("hidden");
-      if (isHidden) {
-        mobileMenu.classList.remove("hidden");
-        mobileMenu.classList.add("flex");
-        menuToggle.innerHTML = '<i class="ri-close-line"></i>';
-      } else {
-        mobileMenu.classList.add("hidden");
-        mobileMenu.classList.remove("flex");
-        menuToggle.innerHTML = '<i class="ri-menu-line"></i>';
-      }
-    });
-  }
 });
 
 function renderProductDetail() {
-  // Get product ID from URL query parameter
   const params = new URLSearchParams(window.location.search);
   const productId = parseInt(params.get("id")) || 9; // Default to Asgaard Sofa (id: 9)
 
@@ -36,60 +15,51 @@ function renderProductDetail() {
     return;
   }
 
-  // Update page title
   document.title = `${product.name} - Furniro`;
 
-  // Update breadcrumb
   const breadcrumb = document.getElementById("productBreadcrumb");
   if (breadcrumb) {
     breadcrumb.textContent = `Home > Shop > ${product.name}`;
   }
 
-  // Update page title
   const pageTitle = document.getElementById("productPageTitle");
   if (pageTitle) {
     pageTitle.textContent = product.name;
   }
 
-  // Render image gallery
   renderImageGallery(product);
 
-  // Render product info
   renderProductInfo(product);
 
-  // Render description
   renderDescription(product);
 
-  // Render related products
   renderRelatedProducts(product);
 }
 
-// ===== RENDER IMAGE GALLERY =====
 function renderImageGallery(product) {
   const gallery = document.getElementById("productImageGallery");
   if (!gallery) return;
 
-  // Collect available images for this product
   const images = [product.image, product.hoverImage];
-  // Add more images from the product folder if they match common patterns
   if (product.id === 9) {
-    // Asgaard Sofa specific images
-    images.push("./images/product/cloudSofa.png", "./images/product/cloudeSofa2.png", "./images/product/mayaSofa.png");
+    images.push(
+      "./images/product/cloudSofa.png",
+      "./images/product/cloudeSofa2.png",
+      "./images/product/mayaSofa.png",
+    );
   } else if (product.id === 10) {
-    // Outdoor Sofa Set specific images
-    images.push("./images/product/outdoorSofa.png", "./images/product/stuartSofa.png");
+    images.push(
+      "./images/product/outdoorSofa.png",
+      "./images/product/stuartSofa.png",
+    );
   } else {
-    // Generic product images
     images.push("./images/product/image1.png", "./images/product/image2.png");
   }
 
-  // Deduplicate
   const uniqueImages = [...new Set(images)].filter(Boolean);
 
-  // Main image (first unique image)
   const mainImage = uniqueImages[0];
 
-  // Build thumbnails (up to 4)
   const thumbnails = uniqueImages.slice(0, 4);
 
   let thumbsHtml = "";
@@ -110,7 +80,6 @@ function renderImageGallery(product) {
       </div>
   `;
 
-  // Click to swap main image
   setTimeout(() => {
     document.querySelectorAll(".product-thumb").forEach((thumb) => {
       thumb.addEventListener("click", () => {
@@ -122,29 +91,26 @@ function renderImageGallery(product) {
   }, 0);
 }
 
-// ===== RENDER PRODUCT INFO =====
 function renderProductInfo(product) {
   const container = document.getElementById("productDetailInfo");
   if (!container) return;
 
-  // Star rating HTML
   const fullStars = Math.floor(product.rating);
   const halfStar = product.rating - fullStars >= 0.5 ? 1 : 0;
   const emptyStars = 5 - fullStars - halfStar;
   let starsHtml = "";
-  for (let i = 0; i < fullStars; i++) starsHtml += '<i class="ri-star-fill"></i>';
+  for (let i = 0; i < fullStars; i++)
+    starsHtml += '<i class="ri-star-fill"></i>';
   if (halfStar) starsHtml += '<i class="ri-star-half-fill"></i>';
-  for (let i = 0; i < emptyStars; i++) starsHtml += '<i class="ri-star-line"></i>';
+  for (let i = 0; i < emptyStars; i++)
+    starsHtml += '<i class="ri-star-line"></i>';
 
-  // Tags
   const tags = product.tags || [];
   const tagsStr = tags.length > 0 ? tags.join(", ") : product.category;
 
-  // SKU
   const sku = product.sku || "N/A";
   const category = product.category || "General";
 
-  // Determine if product is in wishlist for heart icon
   const liked = isInWishlist(product.id);
 
   container.innerHTML = `
@@ -154,7 +120,7 @@ function renderProductInfo(product) {
     <div class="mt-3 flex items-center gap-3">
       <div class="flex items-center gap-1 text-[#FFC700]">${starsHtml}</div>
       <span class="text-sm text-[#999999]">|</span>
-      <span class="text-sm text-[#999999]">${product.reviews} Customer Review${product.reviews !== 1 ? 's' : ''}</span>
+      <span class="text-sm text-[#999999]">${product.reviews} Customer Review${product.reviews !== 1 ? "s" : ""}</span>
     </div>
 
     <p class="mt-4 text-sm leading-6 text-[#777777]">${product.description}</p>
@@ -216,7 +182,6 @@ function renderProductInfo(product) {
       </div>
   `;
 
-  // Attach event listeners
   setTimeout(() => {
     let qty = 1;
     const qtyDisplay = document.getElementById("qtyDisplay");
@@ -263,7 +228,6 @@ function renderProductInfo(product) {
   }, 0);
 }
 
-// ===== RENDER DESCRIPTION =====
 function renderDescription(product) {
   const container = document.getElementById("productDescription");
   if (!container) return;
@@ -276,31 +240,27 @@ function renderDescription(product) {
     </p>
     <p class="text-sm leading-7 text-[#777777]">
       The ${product.name} features high-quality materials and expert craftsmanship.
-      ${specs.fillingMaterial ? `Filled with ${specs.fillingMaterial} for optimal comfort.` : ''}
-      ${specs.upholsteryMaterial ? `Upholstered in premium ${specs.upholsteryMaterial}.` : ''}
-      ${specs.finishType ? `Finished with a ${specs.finishType} surface.` : ''}
+      ${specs.fillingMaterial ? `Filled with ${specs.fillingMaterial} for optimal comfort.` : ""}
+      ${specs.upholsteryMaterial ? `Upholstered in premium ${specs.upholsteryMaterial}.` : ""}
+      ${specs.finishType ? `Finished with a ${specs.finishType} surface.` : ""}
     </p>
   `;
 }
 
-// ===== RENDER RELATED PRODUCTS =====
 function renderRelatedProducts(product) {
   const container = document.getElementById("relatedProductsContainer");
   if (!container) return;
 
   const allProducts = getProducts();
-  // Find products in the same category, excluding current product
   const related = allProducts.filter(
-    (p) => p.category === product.category && p.id !== product.id
+    (p) => p.category === product.category && p.id !== product.id,
   );
 
-  // Shuffle and pick up to 4
   const shuffled = related.sort(() => Math.random() - 0.5).slice(0, 4);
 
-  // If we still don't have 4, fill with other products
   if (shuffled.length < 4) {
     const others = allProducts.filter(
-      (p) => p.id !== product.id && !shuffled.find((s) => s.id === p.id)
+      (p) => p.id !== product.id && !shuffled.find((s) => s.id === p.id),
     );
     while (shuffled.length < 4 && others.length > 0) {
       const randomIndex = Math.floor(Math.random() * others.length);
